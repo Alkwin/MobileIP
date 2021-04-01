@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.ui.login
+package com.cringe.mobileip.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

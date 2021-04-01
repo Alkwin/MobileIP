@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.ui.login
+package com.cringe.mobileip.ui.login
 
 /**
  * User details post authentication that is exposed to the UI

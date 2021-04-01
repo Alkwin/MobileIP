@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.ui.login
+package com.cringe.mobileip.ui.login
 
 /**
  * Authentication result : success (user details) or error message.

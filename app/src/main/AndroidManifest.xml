@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileIP">
         <activity
-            android:name=".ui.ui.login.LoginActivity"
+            android:name="com.cringe.mobileip.ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
