@@ -9,4 +9,4 @@ Go to the 'bin' directory inside the unzipped file and run studio64.exe to insta
 Commit structure: [X-Y] [message], where:
   - X is the number of the sprint
   - Y is the number of the card inside the sprint
-  - the message will contain a short description of the changes made
+  - message will contain a short description of the changes made
