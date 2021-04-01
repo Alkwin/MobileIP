@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.ActivityLoginBinding
+import com.cringe.mobileip.ui.register.RegisterActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -92,14 +93,18 @@ class LoginActivity : AppCompatActivity() {
                 }
                 false
             }
+        }
 
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                //loginViewModel.login(username.text.toString(), password.text.toString())
-                val newIntent = Intent(this.context, MainActivity::class.java)
+        login.setOnClickListener {
+            loading.visibility = View.VISIBLE
+            //loginViewModel.login(username.text.toString(), password.text.toString())
+            val newIntent = Intent(this, MainActivity::class.java)
 
-                startActivity(newIntent)
-            }
+            startActivity(newIntent)
+        }
+
+        binding.register?.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
