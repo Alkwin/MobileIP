@@ -61,11 +61,10 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+                startHomeActivity()
+                setResult(Activity.RESULT_OK)
+                finish()
             }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
         username.afterTextChanged {
@@ -97,15 +96,19 @@ class LoginActivity : AppCompatActivity() {
 
         login.setOnClickListener {
             loading.visibility = View.VISIBLE
-            //loginViewModel.login(username.text.toString(), password.text.toString())
-            val newIntent = Intent(this, MainActivity::class.java)
+            loginViewModel.login(username.text.toString(), password.text.toString())
 
-            startActivity(newIntent)
+            /*startHomeActivity()*/
         }
 
         binding.register?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+    }
+
+    private fun startHomeActivity() {
+        val newIntent = Intent(this, MainActivity::class.java)
+        startActivity(newIntent)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

@@ -18,6 +18,7 @@
         android:layout_marginTop="96dp"
         android:autofillHints="@string/prompt_email"
         android:hint="@string/prompt_email"
+        android:text="tudor.craciun1@gmail.com"
         android:inputType="textEmailAddress"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +32,8 @@
         android:layout_marginTop="8dp"
         android:autofillHints="@string/prompt_password"
         android:hint="@string/prompt_password"
+        android:text="123456"
+
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
