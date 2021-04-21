@@ -19,9 +19,10 @@ class ServerManager {
         val client = HttpClient(CIO)
         val response: HttpResponse
         return try {
-            /*response = client.post("https://reqres.in/api/login")*/
+            // This will return 200
+            response = client.get("https://reqres.in/api/login")
 
-            Log.v(TAG, kotlinx.serialization.json.Json.encodeToString(user))
+            /*Log.v(TAG, kotlinx.serialization.json.Json.encodeToString(user))
             Log.v(TAG, "{\n" +
                     "    \"email\": \"eve.holt@reqres.in\",\n" +
                     "    \"password\": \"cityslicka\"\n" +
@@ -36,7 +37,7 @@ class ServerManager {
             }
             Log.v(TAG, "${response.status}")
             Log.v(TAG, "$response")
-            client.close()
+            client.close()*/
             response.status.toString()
         } catch (e: Exception) {
             e.printStackTrace()

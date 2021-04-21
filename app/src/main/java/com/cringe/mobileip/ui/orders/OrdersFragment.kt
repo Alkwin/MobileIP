@@ -29,10 +29,6 @@ class OrdersFragment : Fragment() {
         _binding = FragmentOrdersBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textOrders
-        ordersViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 

@@ -2,7 +2,9 @@ package com.cringe.mobileip.ui.data
 
 import com.cringe.mobileip.server.ServerManager
 import com.cringe.mobileip.ui.data.model.LoggedInUser
+import io.ktor.client.request.*
 import kotlinx.coroutines.runBlocking
+import kotlinx.serialization.encodeToString
 import java.io.IOException
 
 /**
@@ -22,7 +24,10 @@ class LoginDataSource {
             var response = ""
             // Not necessarily the best idea
            runBlocking {
-                response = sm.sendRequest(user)
+                response = sm.sendRequest(
+                    LoggedInUser(kotlinx.serialization.json.Json.encodeToString(user),
+                    "https://reqres.in/api/login")
+                )
             }
             return if(response.contains("200")) {
                 Result.Success(user)
