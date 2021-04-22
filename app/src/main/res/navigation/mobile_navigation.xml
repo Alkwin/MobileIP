@@ -22,9 +22,10 @@
         android:name="com.cringe.mobileip.ui.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.cringe.mobileip.ui.profile.ProfileFragment"
-        android:label="@string/title_settings"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
