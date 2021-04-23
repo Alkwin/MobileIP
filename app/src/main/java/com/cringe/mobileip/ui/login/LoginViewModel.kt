@@ -5,10 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.cringe.mobileip.R
-import com.cringe.mobileip.ui.data.LoginRepository
+import com.cringe.mobileip.server.AuthenticationManager
 import com.cringe.mobileip.ui.data.Result
+import com.cringe.mobileip.ui.data.model.User
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val authenticationManager: AuthenticationManager) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -16,9 +17,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String) {
-        // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+    fun login(email: String, password: String) {
+        val result = authenticationManager.login(User(email, password))
 
         if (result is Result.Success) {
             _loginResult.value =
@@ -28,9 +28,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         }
     }
 
-    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
-            _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
+    fun loginDataChanged(email: String, password: String) {
+        if (!isEmailValid(email)) {
+            _loginForm.value = LoginFormState(emailError = R.string.invalid_email)
         } else if (!isPasswordValid(password)) {
             _loginForm.value = LoginFormState(passwordError = R.string.invalid_password)
         } else {
@@ -38,12 +38,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         }
     }
 
-    // A placeholder username validation check
-    private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
-            Patterns.EMAIL_ADDRESS.matcher(username).matches()
+    private fun isEmailValid(email: String): Boolean {
+        return if (email.contains('@')) {
+            Patterns.EMAIL_ADDRESS.matcher(email).matches()
         } else {
-            username.isNotBlank()
+            email.isNotBlank()
         }
     }
 

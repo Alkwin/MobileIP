@@ -15,12 +15,19 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/ordersList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:text="Am nevoie de castraveti si de rosii ca sa imi fac o salata ca mor de foame" />

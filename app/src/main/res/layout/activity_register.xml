@@ -21,6 +21,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:text="Crăciun Tudor"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +31,8 @@
             android:selectAllOnFocus="true" />
 
         <EditText
-            android:id="@+id/username"
+            android:text="tudor.craciun1@cmail.com"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="@string/prompt_email"
@@ -40,6 +42,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
+            android:text="123456789"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

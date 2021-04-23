@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.ActivityLoginBinding
+import com.cringe.mobileip.ui.data.model.User
 import com.cringe.mobileip.ui.register.RegisterActivity
 
 
@@ -30,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val username = binding.username
+        val email = binding.name
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
@@ -41,11 +42,10 @@ class LoginActivity : AppCompatActivity() {
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
 
-            // disable login button unless both username / password is valid
             login.isEnabled = loginState.isDataValid
 
-            if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
+            if (loginState.emailError != null) {
+                email.error = getString(loginState.emailError)
             }
             if (loginState.passwordError != null) {
                 password.error = getString(loginState.passwordError)
@@ -67,9 +67,9 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        username.afterTextChanged {
+        email.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
+                email.text.toString(),
                 password.text.toString()
             )
         }
@@ -77,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                    username.text.toString(),
+                    email.text.toString(),
                     password.text.toString()
                 )
             }
@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                            username.text.toString(),
+                            email.text.toString(),
                             password.text.toString()
                         )
                 }
@@ -96,9 +96,12 @@ class LoginActivity : AppCompatActivity() {
 
         login.setOnClickListener {
             loading.visibility = View.VISIBLE
-            //loginViewModel.login(username.text.toString(), password.text.toString())
+            loginViewModel.login(
+                email.text.toString(),
+                password.text.toString()
+            )
 
-            startHomeActivity()
+            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {
