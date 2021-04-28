@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.R
-import com.cringe.mobileip.databinding.FragmentHomeBinding
+import com.cringe.mobileip.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var homeViewModel: ProfileViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private lateinit var profileViewModel: ProfileViewModel
+    private var _binding: FragmentProfileBinding? = null
+    private lateinit var profileList: LinearLayout
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,16 +28,25 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel =
+        profileViewModel =
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        profileList=binding.profileList
+
+        val profileImage: ImageView = binding.profileImage
+        profileImage.setImageResource(R.drawable.profile_example)
+
+        val profileName: TextView = binding.profileName
+        profileName.text = binding.profileName.text
+
+        val profileAddress: TextView = binding.profileAddress
+        profileAddress.text = binding.profileAddress.text
+
+        val profileNumber: TextView = binding.profileNumber
+        profileNumber.text = binding.profileNumber.text
         return root
     }
 
