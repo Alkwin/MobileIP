@@ -12,6 +12,6 @@
         android:textSize="20sp"
         android:background="@drawable/order_category"
         android:layout_margin="8dp"
-        />
+        android:textColor="@color/white" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

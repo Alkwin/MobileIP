@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.FragmentHomeBinding
-import com.cringe.mobileip.ui.orders.adapters.OrdersCategoriesAdapter
+import com.cringe.mobileip.ui.data.Category
+import com.cringe.mobileip.ui.home.adapters.CategoriesAdapter
+import com.cringe.mobileip.ui.home.adapters.CategoryAndStatus
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -52,7 +51,7 @@ class HomeFragment : Fragment() {
                 justifyContent = JustifyContent.FLEX_START
                 alignItems = AlignItems.CENTER
             }
-            recyclerView.adapter = OrdersCategoriesAdapter(categories)
+            recyclerView.adapter = CategoriesAdapter(categories.map{ CategoryAndStatus(Category(it), false) })
         }
 
         return root
