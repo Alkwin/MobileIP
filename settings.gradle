@@ -3,6 +3,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        maven { url "https://google.bintray.com/flexbox-layout" }
     }
 }
 rootProject.name = "MobileIP"
