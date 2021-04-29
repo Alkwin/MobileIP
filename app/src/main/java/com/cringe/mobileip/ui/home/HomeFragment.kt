@@ -10,6 +10,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.FragmentHomeBinding
+import com.cringe.mobileip.ui.orders.adapters.OrdersCategoriesAdapter
+import com.google.android.flexbox.AlignItems
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexboxLayoutManager
+import com.google.android.flexbox.JustifyContent
 
 class HomeFragment : Fragment() {
 
@@ -20,21 +25,36 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val categories = listOf(
+        "Mancare",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
+        "Atentie"
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        with(binding) {
+            recyclerView.layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                flexDirection = FlexDirection.ROW
+                justifyContent = JustifyContent.FLEX_START
+                alignItems = AlignItems.CENTER
+            }
+            recyclerView.adapter = OrdersCategoriesAdapter(categories)
+        }
+
         return root
     }
 
