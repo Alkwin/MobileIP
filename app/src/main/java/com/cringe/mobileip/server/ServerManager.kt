@@ -22,7 +22,6 @@ class ServerManager<T : Any> {
         URL: String,
         method: HttpMethod
     ): String {
-        Log.v(TAG, "-----------------------------------")
         val client = HttpClient(CIO) {
             install(Logging) {
                 logger = Logger.DEFAULT

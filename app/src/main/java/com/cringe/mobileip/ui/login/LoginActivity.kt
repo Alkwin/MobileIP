@@ -11,8 +11,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.ActivityLoginBinding
@@ -35,6 +34,9 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
+        val spinner: Spinner? = binding.spinnerType
+
+        initializeSpinner(spinner)
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -100,13 +102,24 @@ class LoginActivity : AppCompatActivity() {
                 email.text.toString(),
                 password.text.toString()
             )
-
-            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
+
+        //setListeners()
+
+    }
+
+    private fun initializeSpinner(spinner: Spinner?) {
+        val types = listOf("Helper", "Needer")
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            types
+        )
+        spinner?.adapter = adapter
     }
 
     private fun startHomeActivity() {
