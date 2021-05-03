@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentHomeBinding
@@ -31,8 +32,38 @@ class HomeFragment : Fragment() {
         "Haide",
         "Medicamente",
         "Igiena",
+        "Atentie",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
+        "Atentie",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
+        "Atentie",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
+        "Atentie",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
+        "Atentie",
+        "Transport",
+        "Alimente",
+        "Haide",
+        "Medicamente",
+        "Igiena",
         "Atentie"
-    )
+    ).map{ CategoryAndStatus(Category(it), false) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,10 +79,10 @@ class HomeFragment : Fragment() {
         with(binding) {
             recyclerView.layoutManager = FlexboxLayoutManager(requireContext()).apply {
                 flexDirection = FlexDirection.ROW
-                justifyContent = JustifyContent.FLEX_START
+                justifyContent = JustifyContent.CENTER
                 alignItems = AlignItems.CENTER
             }
-            recyclerView.adapter = CategoriesAdapter(categories.map{ CategoryAndStatus(Category(it), false) })
+            recyclerView.adapter = CategoriesAdapter(categories)
         }
 
         return root

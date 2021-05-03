@@ -22,16 +22,21 @@ class CategoriesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val context = holder.textView.context
+
         holder.textView.text = categories[position].category.name
 
-        holder.textView.background = ContextCompat.getDrawable(
-            holder.textView.context,
-            if (categories[position].status)
-                R.drawable.order_category_selected
-            else
-                R.drawable.order_category
-        )
-
+        if (categories[position].status) {
+            holder.textView.background = ContextCompat.getDrawable(
+                context, R.drawable.order_category_selected
+            )
+            holder.textView.setTextColor(context.resources.getColor(R.color.design_default_color_on_secondary, context.theme))
+        } else {
+            holder.textView.background = ContextCompat.getDrawable(
+                holder.textView.context, R.drawable.order_category
+            )
+            holder.textView.setTextColor(context.resources.getColor(R.color.design_default_color_on_primary, context.theme))
+        }
         holder.textView.setOnClickListener {
             categories[position].status = !categories[position].status
             notifyItemChanged(position)
