@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cringe.mobileip.R
 
 class CategoriesAdapter(
-    private val categories: List<CategoryAndStatus>
+    private val categories: MutableList<CategoryAndStatus>
 ): RecyclerView.Adapter<CategoriesAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var textView: TextView = itemView.findViewById(R.id.categoryNameText)

@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Adapter
+import androidx.core.text.trimmedLength
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentHomeBinding
 import com.cringe.mobileip.ui.data.Category
 import com.cringe.mobileip.ui.home.adapters.CategoriesAdapter
 import com.cringe.mobileip.ui.home.adapters.CategoryAndStatus
+import com.cringe.mobileip.utils.afterTextChanged
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -63,7 +66,7 @@ class HomeFragment : Fragment() {
         "Medicamente",
         "Igiena",
         "Atentie"
-    ).map{ CategoryAndStatus(Category(it), false) }
+    ).map{ CategoryAndStatus(Category(it), false) }.toMutableList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,6 +86,16 @@ class HomeFragment : Fragment() {
                 alignItems = AlignItems.CENTER
             }
             recyclerView.adapter = CategoriesAdapter(categories)
+
+            tagEditText.afterTextChanged {
+                addTagButton.isEnabled = it.trim().isNotEmpty()
+            }
+
+            addTagButton.setOnClickListener {
+                categories.add(CategoryAndStatus(Category(tagEditText.text.toString()), true))
+                tagEditText.text?.clear()
+                recyclerView.adapter?.notifyItemInserted(categories.size)
+            }
         }
 
         return root

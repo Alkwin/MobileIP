@@ -75,16 +75,19 @@
                 android:textSize="15sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/tagEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="4"
                 android:textSize="15sp"
                 android:gravity="center"
+                android:textColor="@color/design_default_color_on_primary"
                 android:hint="Enter name here"
                 android:padding="10dp" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addTagButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
