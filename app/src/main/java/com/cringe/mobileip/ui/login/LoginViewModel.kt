@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.cringe.mobileip.R
 import com.cringe.mobileip.server.AuthenticationManager
+import com.cringe.mobileip.server.LoginResult
 import com.cringe.mobileip.ui.data.Result
 import com.cringe.mobileip.ui.data.model.User
 

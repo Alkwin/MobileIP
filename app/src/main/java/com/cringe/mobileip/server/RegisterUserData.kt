@@ -1,10 +1,10 @@
-package com.cringe.mobileip.ui.data.model
+package com.cringe.mobileip.server
 
+import com.cringe.mobileip.ui.data.model.User
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class RegisterUserData(
-    val email: String,
-    val password: String,
+    val user: User,
     val name: String
 )

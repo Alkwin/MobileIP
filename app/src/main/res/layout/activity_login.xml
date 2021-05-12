@@ -12,7 +12,7 @@
     tools:context=".ui.login.LoginActivity">
 
     <EditText
-        android:text="tudor.craciun1@gmail.com"
+        android:text="eve.holt@reqres.in"
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:text="123456789"
+        android:text="cityslicka"
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

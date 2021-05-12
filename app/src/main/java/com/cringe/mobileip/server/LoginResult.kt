@@ -1,4 +1,6 @@
-package com.cringe.mobileip.ui.login
+package com.cringe.mobileip.server
+
+import com.cringe.mobileip.ui.login.LoggedInUserView
 
 /**
  * Authentication result : success (user details) or error message.

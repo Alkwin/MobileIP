@@ -3,7 +3,6 @@ package com.cringe.mobileip.server
 import com.cringe.mobileip.ui.data.LoginManager
 import com.cringe.mobileip.ui.data.RegisterManager
 import com.cringe.mobileip.ui.data.Result
-import com.cringe.mobileip.ui.data.model.RegisterUserData
 import com.cringe.mobileip.ui.data.model.User
 
 /**
@@ -44,10 +43,9 @@ class AuthenticationManager(val loginManager: LoginManager,
                  password: String,
                  name:String
     ) : Result<RegisterUserData> {
-        val result = registerManager.register(RegisterUserData(
-            email,
-            password,
-            name)
+        val result = registerManager.register(
+            RegisterUserData(
+            User(email, password), name)
         )
 
         //The user will register and then login manually

@@ -1,48 +1,48 @@
 package com.cringe.mobileip.server
 
-import android.util.Log
 import com.cringe.mobileip.ui.data.Result
-import com.cringe.mobileip.ui.data.model.RegisterUserData
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
 import io.ktor.http.*
-import java.lang.Exception
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.decodeFromString
 
 val TAG = "ServerManager"
 
-class ServerManager<T : Any> {
+class ServerManager {
 
     private var errorMessage = "-1"
 
-    suspend fun sendRequest(
-        body: String,
-        URL: String,
-        method: HttpMethod
-    ): String {
+    suspend inline fun <reified V: Any> sendRequest(
+        reqBody: String,
+        reqURL: String,
+        reqMethod: HttpMethod
+    ): V {
+        //Makes the request
         val client = HttpClient(CIO) {
             install(Logging) {
                 logger = Logger.DEFAULT
                 level = LogLevel.BODY
             }
+            //Logging displays information about the request in the Console
         }
-        val response: HttpResponse
-        return try {
-            response = client.request(URL) {
-                this.method = method
-                this.body = body
-            }
-            response.status.toString()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            errorMessage
+        //val response = client.request<V>(reqURL) did not work for some reason (to directly deserialize it)
+        val response = client.request<String>(reqURL) {
+            method = reqMethod
+            body = reqBody
+            contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
         }
+        println("------$response------")
+        //Deserializes the body of the response into the type V
+        val answer = Json.decodeFromString<V>(response)
+        println("======$answer======")
+        return answer
     }
 
-    fun interpretReturnMessage(response: String, user: T): Result<T> {
-        return if(response.contains("200")) {
+    fun <T: Any> interpretReturnMessage(user: T): Result<T> {
+        return if(true) {
             Result.Success(user)
         } else {
             Result.Failure(user)
