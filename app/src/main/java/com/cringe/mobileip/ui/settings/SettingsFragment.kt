@@ -1,17 +1,21 @@
 package com.cringe.mobileip.ui.settings
 
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentSettingsBinding
+
+
+
+
+
 
 class SettingsFragment : Fragment() {
 
@@ -36,6 +40,15 @@ class SettingsFragment : Fragment() {
         settingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        val sharedPreferences = this.requireActivity()
+            .getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+
+        var isDarkModeOn = sharedPreferences.getBoolean("isDarkModeOn", false)
+
+        if (isDarkModeOn) {
+            binding.darkModeSwitch.performClick()
+        }
         switchFunction()
         return root
     }
@@ -46,29 +59,29 @@ class SettingsFragment : Fragment() {
     }
 
     fun switchFunction(){
-        binding.switch2.setOnClickListener{
+        binding.darkModeSwitch.setOnClickListener{
+            val sharedPreferences = this.requireActivity()
+                .getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+
             if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO || AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED ) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                editor.putBoolean(
+                    "isDarkModeOn", true);
+                editor.apply();
 
             }
             else{
-                if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+                if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    editor.putBoolean(
+                        "isDarkModeOn", false);
+                    editor.apply();
+                }
             }
         }
-        /*val sharedPreferences = getSharedPreferences(
-            "sharedPrefs", MODE_PRIVATE
-        )
-        val editor = sharedPreferences.edit()
-        val isDarkModeOn = sharedPreferences
-            .getBoolean(
-                "isDarkModeOn", false
-            )
-        if (isDarkModeOn) {
-           AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-        else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }*/
+
+
+
     }
 }

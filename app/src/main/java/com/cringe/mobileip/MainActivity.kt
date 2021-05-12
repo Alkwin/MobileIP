@@ -1,8 +1,10 @@
 package com.cringe.mobileip
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -31,5 +33,30 @@ class MainActivity : AppCompatActivity() {
         )
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences(
+            "sharedPrefs", MODE_PRIVATE
+        )
+        var isDarkModeOn = sharedPreferences
+            .getBoolean(
+                "isDarkModeOn", false
+            )
+
+        if (isDarkModeOn) {
+            AppCompatDelegate
+                .setDefaultNightMode(
+                    AppCompatDelegate
+                        .MODE_NIGHT_YES);
+
+        }
+        else {
+            AppCompatDelegate
+                .setDefaultNightMode(
+                    AppCompatDelegate
+                        .MODE_NIGHT_NO);
+        }
     }
+
+
 }

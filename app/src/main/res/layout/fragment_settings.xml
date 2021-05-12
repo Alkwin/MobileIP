@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Switch
-            android:id="@+id/switch2"
+            android:id="@+id/darkModeSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
