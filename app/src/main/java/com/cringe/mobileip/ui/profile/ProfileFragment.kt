@@ -1,5 +1,6 @@
 package com.cringe.mobileip.ui.profile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.FragmentProfileBinding
+import com.cringe.mobileip.server.ProfileManager
+import com.squareup.picasso.Picasso
+
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +25,7 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,18 +38,24 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
         profileList=binding.profileList
+        val test = ProfileManager();
+        val pageInfo = test.getInfo().data;
 
         val profileImage: ImageView = binding.profileImage
-        profileImage.setImageResource(R.drawable.profile_example)
+        Picasso.get().load(pageInfo.avatar).into(profileImage)
+
 
         val profileName: TextView = binding.profileName
-        profileName.text = binding.profileName.text
+        profileName.text = pageInfo.first_name + " " + pageInfo.last_name
 
         val profileAddress: TextView = binding.profileAddress
-        profileAddress.text = binding.profileAddress.text
+        profileAddress.text = pageInfo.email
 
         val profileNumber: TextView = binding.profileNumber
-        profileNumber.text = binding.profileNumber.text
+        profileNumber.text = pageInfo.id.toString()
+
+
+
         return root
     }
 
