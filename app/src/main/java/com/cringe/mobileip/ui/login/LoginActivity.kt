@@ -7,15 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.ActivityLoginBinding
-import com.cringe.mobileip.ui.data.model.User
+import com.cringe.mobileip.ui.login.utils.LoggedInUserView
+import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
 import com.cringe.mobileip.ui.register.RegisterActivity
 import com.cringe.mobileip.utils.afterTextChanged
 

@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_needier"
-        android:name="com.cringe.mobileip.ui.home.NeedierFragment"
+        android:name="com.cringe.mobileip.ui.home.needier.NeedierFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_needier" />
 
     <fragment
         android:id="@+id/navigation_helper"
-        android:name="com.cringe.mobileip.ui.home.HelperFragment"
+        android:name="com.cringe.mobileip.ui.home.helper.HelperFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_helper" />
 

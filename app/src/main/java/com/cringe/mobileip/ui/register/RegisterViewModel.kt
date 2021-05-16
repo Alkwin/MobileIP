@@ -3,8 +3,8 @@ package com.cringe.mobileip.ui.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.cringe.mobileip.server.AuthenticationManager
-import com.cringe.mobileip.ui.data.Result
+import com.cringe.mobileip.data.managers.AuthenticationManager
+import com.cringe.mobileip.server.model.utils.Result
 
 class RegisterViewModel(private val authenticationManager: AuthenticationManager): ViewModel() {
 

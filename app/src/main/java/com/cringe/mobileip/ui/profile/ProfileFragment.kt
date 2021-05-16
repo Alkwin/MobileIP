@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentProfileBinding
-import com.cringe.mobileip.server.ProfileManager
+import com.cringe.mobileip.data.managers.ProfileManager
 import com.squareup.picasso.Picasso
 
 

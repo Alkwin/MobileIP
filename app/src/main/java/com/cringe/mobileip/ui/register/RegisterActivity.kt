@@ -2,14 +2,11 @@ package com.cringe.mobileip.ui.register
 
 import android.app.Activity
 import android.os.Bundle
-import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.ActivityRegisterBinding
-import com.cringe.mobileip.ui.login.LoginViewModel
-import com.cringe.mobileip.ui.login.LoginViewModelFactory
+import com.cringe.mobileip.ui.register.utils.RegisterViewModelFactory
 
 class RegisterActivity: AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding

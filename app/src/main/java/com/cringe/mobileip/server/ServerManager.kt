@@ -1,6 +1,6 @@
 package com.cringe.mobileip.server
 
-import com.cringe.mobileip.ui.data.Result
+import com.cringe.mobileip.server.model.utils.Result
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.logging.*

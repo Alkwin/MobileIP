@@ -5,10 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.cringe.mobileip.R
-import com.cringe.mobileip.server.AuthenticationManager
-import com.cringe.mobileip.server.LoginResult
-import com.cringe.mobileip.ui.data.Result
-import com.cringe.mobileip.ui.data.model.User
+import com.cringe.mobileip.data.managers.AuthenticationManager
+import com.cringe.mobileip.server.model.login.LoginResult
+import com.cringe.mobileip.server.model.utils.Result
+import com.cringe.mobileip.server.model.utils.User
+import com.cringe.mobileip.ui.login.utils.LoggedInUserView
+import com.cringe.mobileip.ui.login.utils.LoginFormState
 
 class LoginViewModel(private val authenticationManager: AuthenticationManager) : ViewModel() {
 
