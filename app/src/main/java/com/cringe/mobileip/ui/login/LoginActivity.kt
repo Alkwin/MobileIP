@@ -25,6 +25,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
 
+    private var currentUserType = "Helper"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -98,13 +100,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-            loading.visibility = View.VISIBLE
-            loginViewModel.login(
-                email.text.toString(),
-                password.text.toString()
-            )
+//            loading.visibility = View.VISIBLE
+//            loginViewModel.login(
+//                email.text.toString(),
+//                password.text.toString()
+//            )
 
-            //startHomeActivity()
+            startHomeActivity()
         }
 
         binding.register?.setOnClickListener {
@@ -121,10 +123,24 @@ class LoginActivity : AppCompatActivity() {
             types
         )
         spinner?.adapter = adapter
+        spinner?.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                currentUserType = types[position]
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+        }
     }
 
     private fun startHomeActivity() {
         val newIntent = Intent(this, MainActivity::class.java)
+        newIntent.putExtra(MainActivity.INTENT_EXTRA_IS_HELPER, currentUserType == "Helper")
         startActivity(newIntent)
     }
 

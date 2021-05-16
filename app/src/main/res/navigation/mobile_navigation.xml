@@ -7,9 +7,21 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cringe.mobileip.ui.home.HomeFragment"
+        android:name="com.cringe.mobileip.ui.home.HomeManagerFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_manager" />
+
+    <fragment
+        android:id="@+id/navigation_needier"
+        android:name="com.cringe.mobileip.ui.home.NeedierFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_needier" />
+
+    <fragment
+        android:id="@+id/navigation_helper"
+        android:name="com.cringe.mobileip.ui.home.HelperFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_helper" />
 
     <fragment
         android:id="@+id/navigation_orders"

@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val isHelper = intent.getBooleanExtra(INTENT_EXTRA_IS_HELPER, true)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -34,10 +36,10 @@ class MainActivity : AppCompatActivity() {
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         val sharedPreferences: SharedPreferences = getSharedPreferences(
             "sharedPrefs", MODE_PRIVATE
         )
+
         var isDarkModeOn = sharedPreferences
             .getBoolean(
                 "isDarkModeOn", false
@@ -56,7 +58,19 @@ class MainActivity : AppCompatActivity() {
                     AppCompatDelegate
                         .MODE_NIGHT_NO);
         }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.navigation_home) {
+                if (isHelper) {
+                    navController.navigate(R.id.navigation_helper)
+                } else {
+                    navController.navigate(R.id.navigation_needier)
+                }
+            }
+        }
     }
 
-
+    companion object {
+        const val INTENT_EXTRA_IS_HELPER = "INTENT_EXTRA_IS_HELPER"
+    }
 }

@@ -4,25 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import android.widget.Adapter
-import androidx.core.text.trimmedLength
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.cringe.mobileip.databinding.FragmentHomeBinding
+import com.cringe.mobileip.databinding.FragmentNeedierBinding
 import com.cringe.mobileip.ui.data.Category
 import com.cringe.mobileip.ui.home.adapters.CategoriesAdapter
 import com.cringe.mobileip.ui.home.adapters.CategoryAndStatus
-import com.cringe.mobileip.utils.afterTextChanged
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
 
-class HomeFragment : Fragment() {
+class NeedierFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private var _binding: FragmentHomeBinding? = null
+    private lateinit var needierViewModel: NeedierViewModel
+    private var _binding: FragmentNeedierBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -73,11 +69,10 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentNeedierBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        needierViewModel = ViewModelProvider(this).get(NeedierViewModel::class.java)
 
         with(binding) {
             recyclerView.layoutManager = FlexboxLayoutManager(requireContext()).apply {
@@ -86,18 +81,7 @@ class HomeFragment : Fragment() {
                 alignItems = AlignItems.CENTER
             }
             recyclerView.adapter = CategoriesAdapter(categories)
-
-            tagEditText.afterTextChanged {
-                addTagButton.isEnabled = it.trim().isNotEmpty()
-            }
-
-            addTagButton.setOnClickListener {
-                categories.add(CategoryAndStatus(Category(tagEditText.text.toString()), true))
-                tagEditText.text?.clear()
-                recyclerView.adapter?.notifyItemInserted(categories.size)
-            }
         }
-
         return root
     }
 

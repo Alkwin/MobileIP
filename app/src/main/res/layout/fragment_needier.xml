@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home.NeedierFragment">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -71,31 +71,22 @@
                 android:textColor="@color/design_default_color_on_primary"
                 android:gravity="start"
                 android:padding="10dp"
-                android:text="Add new tag"
+                android:text="Informatii suplimentare"
                 android:textSize="15sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/tagEditText"
+                android:id="@+id/infoEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:maxHeight="150dp"
                 android:layout_gravity="center"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/design_default_color_on_primary"
-                android:hint="Enter name here"
+                android:hint="Click aici!"
                 android:padding="10dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/addTagButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:background="@drawable/button_background"
-                android:text="Add" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
