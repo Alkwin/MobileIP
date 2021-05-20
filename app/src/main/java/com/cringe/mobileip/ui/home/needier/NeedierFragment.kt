@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentNeedierBinding
-import com.cringe.mobileip.server.model.utils.Category
-import com.cringe.mobileip.ui.home.needier.adapters.CategoriesAdapter
-import com.cringe.mobileip.ui.home.needier.adapters.CategoryAndStatus
+import com.cringe.mobileip.server.model.utils.Tag
+import com.cringe.mobileip.ui.home.needier.adapters.TagsAdapter
+import com.cringe.mobileip.ui.home.needier.adapters.TagAndWeight
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -24,7 +24,7 @@ class NeedierFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val categories = listOf(
+    private val tags = listOf(
         "Mancare",
         "Transport",
         "Alimente",
@@ -62,7 +62,7 @@ class NeedierFragment : Fragment() {
         "Medicamente",
         "Igiena",
         "Atentie"
-    ).map{ CategoryAndStatus(Category(it), false) }.toMutableList()
+    ).map{ TagAndWeight(Tag(it), 0.0) }.toMutableList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -80,7 +80,7 @@ class NeedierFragment : Fragment() {
                 justifyContent = JustifyContent.CENTER
                 alignItems = AlignItems.CENTER
             }
-            recyclerView.adapter = CategoriesAdapter(categories)
+            recyclerView.adapter = TagsAdapter(tags)
         }
         return root
     }
