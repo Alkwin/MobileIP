@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.cringe.mobileip.R
 import com.cringe.mobileip.data.managers.AuthenticationManager
+import com.cringe.mobileip.server.model.login.LoginAnswer
 import com.cringe.mobileip.server.model.login.LoginResult
 import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.server.model.utils.User
@@ -17,18 +18,12 @@ class LoginViewModel(private val authenticationManager: AuthenticationManager) :
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
-    private val _loginResult = MutableLiveData<LoginResult>()
-    val loginResult: LiveData<LoginResult> = _loginResult
+    private val _loginResult = MutableLiveData<Result<LoginAnswer>>()
+    val loginResult: LiveData<Result<LoginAnswer>> = _loginResult
 
     fun login(email: String, password: String) {
         val result = authenticationManager.login(User(email, password))
-
-        if (result is Result.Success) {
-            _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data.email))
-        } else {
-            _loginResult.value = LoginResult(error = R.string.login_failed)
-        }
+        _loginResult.value = result
     }
 
     fun loginDataChanged(email: String, password: String) {
@@ -51,6 +46,6 @@ class LoginViewModel(private val authenticationManager: AuthenticationManager) :
 
     // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
-        return password.length > 5
+        return password.length > 3
     }
 }

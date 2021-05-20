@@ -1,5 +1,7 @@
 package com.cringe.mobileip.data.managers
 
+import com.cringe.mobileip.server.model.login.LoginAnswer
+import com.cringe.mobileip.server.model.register.RegisterAnswer
 import com.cringe.mobileip.server.model.register.RegisterUserData
 import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.server.model.utils.User
@@ -28,28 +30,18 @@ class AuthenticationManager(val loginManager: LoginManager,
         loginManager.logout()
     }
 
-    fun login(user: User): Result<User> {
+    fun login(user: User): Result<LoginAnswer> {
         val result = loginManager.login(user)
 
         if (result is Result.Success) {
-            setLoggedInUser(result.data)
+            setLoggedInUser(user)
         }
 
         return result
     }
 
-    fun register(email: String,
-                 password: String,
-                 name:String
-    ) : Result<RegisterUserData> {
-        val result = registerManager.register(
-            RegisterUserData(
-            User(email, password), name)
-        )
-
-        //The user will register and then login manually
-
-        return result
+    fun register(futureUser: RegisterUserData): Result<RegisterAnswer> {
+        return registerManager.register(futureUser)
     }
 
     private fun setLoggedInUser(user: User) {

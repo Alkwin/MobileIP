@@ -2,6 +2,7 @@ package com.cringe.mobileip.data.managers
 
 import com.cringe.mobileip.server.ServerManager
 import com.cringe.mobileip.server.model.login.LoginAnswer
+import com.cringe.mobileip.server.model.utils.Endpoints
 import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.server.model.utils.User
 import io.ktor.http.*
@@ -14,7 +15,7 @@ import java.io.IOException
  */
 class LoginManager {
 
-    fun login(user: User): Result<User> {
+    fun login(user: User): Result<LoginAnswer> {
         try {
             // TODO: handle loggedInUser authentication
             val sm = ServerManager()
@@ -22,13 +23,17 @@ class LoginManager {
             runBlocking {
                 response = sm.sendRequest<LoginAnswer>(
                     kotlinx.serialization.json.Json.encodeToString(user),
-                    "https://reqres.in/api/login",
+                    Endpoints().loginURL,
                     HttpMethod.Post
                 )
             }
-            return sm.interpretReturnMessage(user)
+            return if(response.success == 1) {
+                Result.Success(response)
+            } else {
+                Result.Failure(response)
+            }
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            return Result.Exception(IOException("Error logging in", e))
         }
     }
 

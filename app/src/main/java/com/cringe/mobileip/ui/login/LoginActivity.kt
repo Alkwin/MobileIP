@@ -17,6 +17,7 @@ import com.cringe.mobileip.ui.login.utils.LoggedInUserView
 import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
 import com.cringe.mobileip.ui.register.RegisterActivity
 import com.cringe.mobileip.utils.afterTextChanged
+import com.cringe.mobileip.server.model.utils.Result
 
 
 class LoginActivity : AppCompatActivity() {
@@ -37,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         val login = binding.login
         val loading = binding.loading
         val spinner: Spinner? = binding.spinnerType
+        val errorMessage = binding.errorMessage
 
         initializeSpinner(spinner)
 
@@ -60,14 +62,17 @@ class LoginActivity : AppCompatActivity() {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
+            if(loginResult is Result.Success) {
                 startHomeActivity()
                 setResult(Activity.RESULT_OK)
                 finish()
+            } else {
+                //showLoginFailed(loginResult.error)
+                if(loginResult is Result.Failure) { // By checking we ensure the type of the Result and thus are able to access its parameters ('data')
+                    errorMessage?.text = loginResult.data.data
+                } else if(loginResult is Result.Exception){
+                    errorMessage?.text = loginResult.exception.message
+                }
             }
         })
 
@@ -99,13 +104,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-//            loading.visibility = View.VISIBLE
-//            loginViewModel.login(
-//                email.text.toString(),
-//                password.text.toString()
-//            )
+            loading.visibility = View.VISIBLE
+            loginViewModel.login(
+                email.text.toString(),
+                password.text.toString()
+            )
 
-            startHomeActivity()
+            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {
@@ -141,21 +146,6 @@ class LoginActivity : AppCompatActivity() {
         val newIntent = Intent(this, MainActivity::class.java)
         newIntent.putExtra(MainActivity.INTENT_EXTRA_IS_HELPER, currentUserType == "Helper")
         startActivity(newIntent)
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
-    }
-
-    private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
 }
 

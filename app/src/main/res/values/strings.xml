@@ -7,7 +7,15 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_name">Name</string>
+    <string name="prompt_surname">Surname</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm password</string>
+    <string name="prompt_address">Address</string>
+    <string name="prompt_phone_number">Phone number</string>
+    <string name="prompt_max_distance">Maximum distance for requests (in km)</string>
+    <string name="prompt_start_hour">Starting hour to begin your activity</string>
+    <string name="prompt_final_hour">Final hour to end your activity</string>
     <string name="action_login">Login</string>
     <string name="action_register">Register</string>
 

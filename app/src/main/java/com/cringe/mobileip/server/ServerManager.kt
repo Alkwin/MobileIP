@@ -1,6 +1,5 @@
 package com.cringe.mobileip.server
 
-import com.cringe.mobileip.server.model.utils.Result
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.features.logging.*
@@ -15,11 +14,11 @@ class ServerManager {
 
     private var errorMessage = "-1"
 
-    suspend inline fun <reified V: Any> sendRequest(
+    suspend inline fun <reified T : Any> sendRequest(
         reqBody: String,
         reqURL: String,
         reqMethod: HttpMethod
-    ): V {
+    ): T {
         //Makes the request
         val client = HttpClient(CIO) {
             install(Logging) {
@@ -34,18 +33,7 @@ class ServerManager {
             body = reqBody
             contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
         }
-        println("------$response------")
         //Deserializes the body of the response into the type V
-        val answer = Json.decodeFromString<V>(response)
-        println("======$answer======")
-        return answer
-    }
-
-    fun <T: Any> interpretReturnMessage(user: T): Result<T> {
-        return if(true) {
-            Result.Success(user)
-        } else {
-            Result.Failure(user)
-        }
+        return Json.decodeFromString(response)
     }
 }
