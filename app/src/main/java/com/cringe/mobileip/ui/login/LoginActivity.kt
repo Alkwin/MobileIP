@@ -5,15 +5,12 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import com.cringe.mobileip.MainActivity
-import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.ActivityLoginBinding
-import com.cringe.mobileip.ui.login.utils.LoggedInUserView
 import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
 import com.cringe.mobileip.ui.register.RegisterActivity
 import com.cringe.mobileip.utils.afterTextChanged
@@ -69,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 //showLoginFailed(loginResult.error)
                 if(loginResult is Result.Failure) { // By checking we ensure the type of the Result and thus are able to access its parameters ('data')
-                    errorMessage?.text = loginResult.data.data
+                    errorMessage?.text = loginResult.data.message
                 } else if(loginResult is Result.Exception){
                     errorMessage?.text = loginResult.exception.message
                 }

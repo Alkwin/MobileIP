@@ -16,10 +16,10 @@ import java.io.IOException
 class LoginManager {
 
     fun login(user: User): Result<LoginAnswer> {
+        val sm = ServerManager()
+        var response: LoginAnswer
         try {
             // TODO: handle loggedInUser authentication
-            val sm = ServerManager()
-            var response: LoginAnswer
             runBlocking {
                 response = sm.sendRequest<LoginAnswer>(
                     kotlinx.serialization.json.Json.encodeToString(user),
@@ -33,7 +33,8 @@ class LoginManager {
                 Result.Failure(response)
             }
         } catch (e: Throwable) {
-            return Result.Exception(IOException("Error logging in", e))
+            e.printStackTrace()
+            return Result.Exception(IOException("Server communication error", e))
         }
     }
 

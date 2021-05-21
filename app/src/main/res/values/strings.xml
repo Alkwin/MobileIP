@@ -24,6 +24,7 @@
     <string name="invalid_email">Not a valid email</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="server_communication_error">Server communication error</string>
 
     <string-array name="types">
         <item>Mobile</item>

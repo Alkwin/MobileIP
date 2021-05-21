@@ -1,5 +1,8 @@
 package com.cringe.mobileip.data.managers
 
+import android.content.res.Resources
+import androidx.core.content.res.TypedArrayUtils.getString
+import com.cringe.mobileip.R
 import com.cringe.mobileip.server.ServerManager
 import com.cringe.mobileip.server.model.register.RegisterAnswer
 import com.cringe.mobileip.server.model.register.RegisterUserData
@@ -28,7 +31,8 @@ class RegisterManager {
                 Result.Failure(response)
             }
         } catch (e: Throwable) {
-            return Result.Exception(IOException("Error registering", e))
+            e.printStackTrace()
+            return Result.Exception(IOException("Server communication error", e))
         }
     }
 }
