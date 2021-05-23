@@ -23,7 +23,7 @@ class LoginManager {
             runBlocking {
                 response = sm.sendRequest<LoginAnswer>(
                     kotlinx.serialization.json.Json.encodeToString(user),
-                    Endpoints().loginURL,
+                    Endpoints.loginURL,
                     HttpMethod.Post
                 )
             }

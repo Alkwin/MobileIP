@@ -4,4 +4,6 @@ data class Product(override var weight: Double) : TagTypeAndWeight {
     override val type = TagType.PRODUCT
 
     override fun isSelected() = weight != 0.0
+
+    override fun getWeight() = weight.toInt()
 }

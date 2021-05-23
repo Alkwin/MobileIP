@@ -5,4 +5,6 @@ interface TagTypeAndWeight {
     val weight: Any
 
     fun isSelected(): Boolean
+
+    fun getWeight(): Int
 }

@@ -4,19 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.databinding.FragmentNeedierBinding
-import com.cringe.mobileip.server.model.utils.tags.Product
-import com.cringe.mobileip.server.model.utils.tags.Service
-import com.cringe.mobileip.server.model.utils.tags.Tag
+import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.ui.home.needier.adapters.TagsAdapter
-import com.cringe.mobileip.ui.home.needier.adapters.TagStatus
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
-import kotlin.random.Random
 
 class NeedierFragment : Fragment() {
 
@@ -27,45 +24,7 @@ class NeedierFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val tags = listOf(
-        "Mancare",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie"
-    ).map{ TagStatus(Tag(it), if (Random.nextBoolean()) Service(false) else Product(0.0)) }.toMutableList()
+    private val tagsAdapter by lazy { TagsAdapter(needierViewModel.tags) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -83,7 +42,24 @@ class NeedierFragment : Fragment() {
                 justifyContent = JustifyContent.CENTER
                 alignItems = AlignItems.CENTER
             }
-            recyclerView.adapter = TagsAdapter(tags)
+            recyclerView.adapter = tagsAdapter
+            sendRequestButton.setOnClickListener {
+                needierViewModel.sendRequest(tagsAdapter.tags, infoEditText.text.toString())
+            }
+        }
+
+        needierViewModel.answerLiveData.observe(viewLifecycleOwner) {
+            when(it) {
+                is Result.Success -> {
+                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()
+                }
+                is Result.Exception -> {
+                    Toast.makeText(requireContext(), "Exception", Toast.LENGTH_LONG).show()
+                }
+            }
         }
         return root
     }

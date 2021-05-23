@@ -16,7 +16,7 @@ import com.cringe.mobileip.server.model.utils.tags.Service
 import com.cringe.mobileip.server.model.utils.tags.TagType
 
 class TagsAdapter(
-    private val tags: MutableList<TagStatus>
+    val tags: MutableList<TagStatus>
 ): RecyclerView.Adapter<TagsAdapter.ViewHolder>() {
     @Volatile
     private var currentType: TagType? = null
