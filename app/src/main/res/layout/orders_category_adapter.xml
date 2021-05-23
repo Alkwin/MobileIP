@@ -12,7 +12,7 @@
         android:textSize="20sp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@drawable/order_category"
+        android:background="@drawable/order_category_default"
         android:layout_margin="8dp"
         android:textColor="@android:color/white" />
 

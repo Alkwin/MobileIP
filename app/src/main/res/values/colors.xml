@@ -4,4 +4,5 @@
     <color name="accent">#3fc1c9</color>
     <color name="secondary_accent">#f5f5f5</color>
     <color name="tertiary">#fc5185</color>
+    <color name="disabled">#333333</color>
 </resources>
