@@ -2,6 +2,7 @@ package com.cringe.mobileip.ui.login
 
 import android.app.Activity
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
+import androidx.lifecycle.lifecycleScope
 import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.databinding.ActivityLoginBinding
 import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
@@ -55,20 +57,19 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        loginViewModel.loginResult.observe(this@LoginActivity, Observer {
-            val loginResult = it ?: return@Observer
-
-            loading.visibility = View.GONE
-            if(loginResult is Result.Success) {
-                startHomeActivity()
-                setResult(Activity.RESULT_OK)
-                finish()
-            } else {
-                //showLoginFailed(loginResult.error)
-                if(loginResult is Result.Failure) { // By checking we ensure the type of the Result and thus are able to access its parameters ('data')
-                    errorMessage?.text = loginResult.data.message
-                } else if(loginResult is Result.Exception){
-                    errorMessage?.text = loginResult.exception.message
+        loginViewModel.answerLiveData.observe(this@LoginActivity, Observer {
+            loading.visibility = View.INVISIBLE
+            when(it) {
+                is Result.Success -> {
+                    startHomeActivity()
+                    setResult(Activity.RESULT_OK)
+                    finish()
+                }
+                is Result.Failure -> {
+                    errorMessage?.text = it.data.message
+                }
+                is Result.Exception -> {
+                    errorMessage?.text = it.exception.message
                 }
             }
         })
@@ -101,13 +102,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login.setOnClickListener {
-//            loading.visibility = View.VISIBLE
-//            loginViewModel.login(
-//                email.text.toString(),
-//                password.text.toString()
-//            )
+            loading.visibility = View.VISIBLE
+            loginViewModel.login(
+                email.text.toString(),
+                password.text.toString()
+            )
 
-            startHomeActivity()
+            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {

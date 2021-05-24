@@ -1,9 +1,7 @@
 package com.cringe.mobileip.ui.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import androidx.lifecycle.*
 import com.cringe.mobileip.R
 import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.server.model.login.LoginAnswer
@@ -12,18 +10,27 @@ import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.server.model.utils.User
 import com.cringe.mobileip.ui.login.utils.LoggedInUserView
 import com.cringe.mobileip.ui.login.utils.LoginFormState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class LoginViewModel(private val authenticationManager: AuthenticationManager) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
-    private val _loginResult = MutableLiveData<Result<LoginAnswer>>()
-    val loginResult: LiveData<Result<LoginAnswer>> = _loginResult
+    private val requestLiveData = MutableLiveData<User>()
+
+    val answerLiveData = requestLiveData.switchMap {
+        flow {
+            emit(authenticationManager.login(it))
+        }.flowOn(Dispatchers.IO).asLiveData()
+    }
 
     fun login(email: String, password: String) {
-        val result = authenticationManager.login(User(email, password))
-        _loginResult.value = result
+        requestLiveData.postValue(
+            User(email, password)
+        )
     }
 
     fun loginDataChanged(email: String, password: String) {

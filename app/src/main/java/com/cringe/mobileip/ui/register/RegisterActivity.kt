@@ -9,6 +9,7 @@ import com.cringe.mobileip.databinding.ActivityRegisterBinding
 import com.cringe.mobileip.server.model.register.RegisterUserData
 import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.ui.register.utils.RegisterViewModelFactory
+import com.cringe.mobileip.utils.afterTextChanged
 
 class RegisterActivity: AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -31,6 +32,7 @@ class RegisterActivity: AppCompatActivity() {
         val maxDistanceAccepted = binding.maxDistance
         val startHour = binding.startHour
         val finalHour = binding.finalHour
+        val register = binding.register
 
         val errorMessage = binding.errorMessage
 
@@ -39,36 +41,71 @@ class RegisterActivity: AppCompatActivity() {
 
         binding.register.setOnClickListener {
             registerViewModel.register(
-                RegisterUserData(
-                    name = name.text.toString(),
-                    surname = surname.text.toString(),
-                    userName = userName.text.toString(),
-                    email = email.text.toString(),
-                    password1 = password1.text.toString(),
-                    password2 = password2.text.toString(),
-                    address = address.text.toString(),
-                    phone_number = phoneNumber.text.toString(),
-                    isolated = isolated,
-                    maxDistanceAccepted = maxDistanceAccepted.text.toString().toInt(),
-                    startHour = startHour.text.toString(),
-                    finalHour = finalHour.text.toString()
-                )
+                getRegisterUserData()
             )
         }
 
-        registerViewModel.registerResult.observe(this@RegisterActivity, Observer {
-            val registerResult = it ?: return@Observer
+        binding.email.afterTextChanged {
+            registerViewModel.registerDataChanged(
+                getRegisterUserData()
+            )
+        }
 
-            if (registerResult is Result.Success) {
-                setResult(Activity.RESULT_OK)
-                finish()
-            } else {
-                if(registerResult is Result.Failure) { // By checking we ensure the type of the Result and thus are able to access its parameters ('data')
-                    errorMessage.setText(registerResult.data.message)
-                } else if(registerResult is Result.Exception){
-                    errorMessage.setText(registerResult.exception.message)
+        binding.password1.afterTextChanged {
+            registerViewModel.registerDataChanged(
+                getRegisterUserData()
+            )
+        }
+
+        binding.password2.afterTextChanged {
+            registerViewModel.registerDataChanged(
+                getRegisterUserData()
+            )
+        }
+
+        registerViewModel.registerFormState.observe(this@RegisterActivity, Observer {
+            val registerState = it ?: return@Observer
+            register.isEnabled = it.isDataValid
+            if(registerState.emailError != null) {
+                email.error = getString(registerState.emailError)
+            }
+            if(registerState.password1Error != null) {
+                password1.error = getString(registerState.password1Error)
+            }
+            if(registerState.password2Error != null) {
+                password2.error = getString(registerState.password2Error)
+            }
+        })
+
+        registerViewModel.answerLiveData.observe(this@RegisterActivity, Observer {
+            when(it) {
+                is Result.Success -> {
+                    setResult(Activity.RESULT_OK)
+                    finish()
+                }
+                is Result.Failure -> {
+                    errorMessage.setText(it.data.message)
+                }
+                is Result.Exception -> {
+                    errorMessage.setText(it.exception.message)
                 }
             }
         })
     }
+
+    private fun getRegisterUserData() =
+        RegisterUserData(
+            name = binding.name.text.toString(),
+            surname = binding.surname.text.toString(),
+            userName = binding.username.text.toString(),
+            email = binding.email.text.toString(),
+            password1 = binding.password1.text.toString(),
+            password2 = binding.password2.text.toString(),
+            address = binding.address.text.toString(),
+            phone_number = binding.phoneNumber.text.toString(),
+            isolated = true,
+            maxDistanceAccepted = binding.maxDistance.text.toString().toInt(),
+            startHour = binding.startHour.text.toString(),
+            finalHour = binding.finalHour.text.toString()
+        )
 }

@@ -22,7 +22,8 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_email">Not a valid email</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password">Password must be >3 characters</string>
+    <string name="password_not_match">Password doesn\'t match</string>
     <string name="login_failed">"Login failed"</string>
     <string name="server_communication_error">Server communication error</string>
 

@@ -11,9 +11,9 @@ import kotlinx.coroutines.flow.flowOn
 import kotlin.random.Random
 
 class NeedierViewModel : ViewModel() {
-    val needierManager = NeedierManager()
+    private val needierManager = NeedierManager()
 
-    val requestLiveData = MutableLiveData<RequestNeedierRequest>()
+    private val requestLiveData = MutableLiveData<RequestNeedierRequest>()
 
     val answerLiveData = requestLiveData.switchMap {
         flow {
