@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:text="Vina"
+            android:text="Craciun"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
             android:selectAllOnFocus="true" />
 
         <EditText
-            android:text="Andreea-Madalina"
+            android:text="Tudor"
             android:id="@+id/surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:selectAllOnFocus="true" />
 
         <EditText
-            android:text="AndreeaVina"
+            android:text="tudor.craciun"
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:selectAllOnFocus="true" />
 
         <EditText
-            android:text="vinaandreea27@gmail.com"
+            android:text="tudor.craciun1@gmail.com"
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
-            android:text="1234"
+            android:text="zoinks"
             android:id="@+id/password1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:selectAllOnFocus="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
         <EditText
-            android:text="1234"
+            android:text="zoinks"
             android:id="@+id/password2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
-            android:text="strada Parului"
+            android:text="Strada Pantelimon"
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
-            android:text="20"
+            android:text="5"
             android:id="@+id/max_distance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
-            android:text="08:30:10"
+            android:text="08:30:00"
             android:id="@+id/startHour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
         <EditText
-            android:text="20:45:15"
+            android:text="17:30:00"
             android:id="@+id/finalHour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -147,8 +147,14 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Status" />
+                android:text="" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/register"

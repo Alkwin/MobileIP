@@ -15,11 +15,11 @@ class AuthenticationManager(val loginManager: LoginManager,
                             val registerManager: RegisterManager
 ) {
 
-    var user: User? = null
-        private set
-
-    val isLoggedIn: Boolean
-        get() = user != null
+    companion object {
+        var user: User? = null
+        var token: String = ""
+        var userName: String = ""
+    }
 
     init {
         user = null
@@ -27,6 +27,8 @@ class AuthenticationManager(val loginManager: LoginManager,
 
     fun logout() {
         user = null
+        token = ""
+        userName = ""
         loginManager.logout()
     }
 
@@ -34,7 +36,7 @@ class AuthenticationManager(val loginManager: LoginManager,
         val result = loginManager.login(user)
 
         if (result is Result.Success) {
-            setLoggedInUser(user)
+            setLoggedInUser(user, result.data)
         }
 
         return result
@@ -44,7 +46,9 @@ class AuthenticationManager(val loginManager: LoginManager,
         return registerManager.register(futureUser)
     }
 
-    private fun setLoggedInUser(user: User) {
-        this.user = user
+    private fun setLoggedInUser(newUser: User, result: LoginAnswer) {
+        user = newUser
+        token = result.token
+        userName = result.username
     }
 }

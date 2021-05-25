@@ -2,6 +2,7 @@ package com.cringe.mobileip.ui.register
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -33,6 +34,7 @@ class RegisterActivity: AppCompatActivity() {
         val startHour = binding.startHour
         val finalHour = binding.finalHour
         val register = binding.register
+        val loading = binding.loading
 
         val errorMessage = binding.errorMessage
 
@@ -40,6 +42,7 @@ class RegisterActivity: AppCompatActivity() {
             .get(RegisterViewModel::class.java)
 
         binding.register.setOnClickListener {
+            loading.visibility = View.VISIBLE
             registerViewModel.register(
                 getRegisterUserData()
             )
@@ -78,6 +81,7 @@ class RegisterActivity: AppCompatActivity() {
         })
 
         registerViewModel.answerLiveData.observe(this@RegisterActivity, Observer {
+            loading.visibility = View.INVISIBLE
             when(it) {
                 is Result.Success -> {
                     setResult(Activity.RESULT_OK)
