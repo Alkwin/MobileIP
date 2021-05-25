@@ -64,5 +64,13 @@
             android:text="077-117-3277"
             android:textAlignment="center" />
 
+        <Button
+            android:id="@+id/logOutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Log Out" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

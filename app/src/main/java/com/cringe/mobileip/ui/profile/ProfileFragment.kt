@@ -1,6 +1,7 @@
 package com.cringe.mobileip.ui.profile
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.databinding.FragmentProfileBinding
 import com.cringe.mobileip.data.managers.ProfileManager
+import com.cringe.mobileip.ui.login.LoginActivity
 import com.squareup.picasso.Picasso
 
 
@@ -37,7 +40,7 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        profileList=binding.profileList
+        profileList = binding.profileList
         val test = ProfileManager();
         val pageInfo = test.getInfo().data;
 
@@ -54,7 +57,13 @@ class ProfileFragment : Fragment() {
         val profileNumber: TextView = binding.profileNumber
         profileNumber.text = pageInfo.id.toString()
 
-
+        binding.logOutButton.setOnClickListener() {
+            AuthenticationManager.logout()
+            val newIntent = Intent(activity, LoginActivity::class.java)
+            newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(newIntent)
+            activity?.finish()
+        }
 
         return root
     }

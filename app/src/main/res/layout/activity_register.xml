@@ -3,168 +3,306 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".ui.register.RegisterActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:text="Craciun"
-            android:id="@+id/name"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_name"
-            android:inputType="text"
-            android:selectAllOnFocus="true" />
+            android:layout_height="match_parent">
 
-        <EditText
-            android:text="Tudor"
-            android:id="@+id/surname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_surname"
-            android:inputType="text"
-            android:selectAllOnFocus="true" />
-
-        <EditText
-            android:text="tudor.craciun"
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_username"
-            android:inputType="text"
-            android:selectAllOnFocus="true" />
-
-        <EditText
-            android:text="tudor.craciun1@gmail.com"
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="zoinks"
-            android:id="@+id/password1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-        <EditText
-            android:text="zoinks"
-            android:id="@+id/password2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
-            android:imeActionLabel="@string/action_sign_in_short"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="Strada Pantelimon"
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_address"
-            android:inputType="text"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="0743887000"
-            android:id="@+id/phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_phone_number"
-            android:inputType="phone"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="5"
-            android:id="@+id/max_distance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_max_distance"
-            android:inputType="number"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="08:30:00"
-            android:id="@+id/startHour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_start_hour"
-            android:inputType="text"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <EditText
-            android:text="17:30:00"
-            android:id="@+id/finalHour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="@string/prompt_email"
-            android:hint="@string/prompt_final_hour"
-            android:inputType="text"
-            android:selectAllOnFocus="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/error_message"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:ems="10"
-                android:text="" />
-
-            <ProgressBar
-                android:id="@+id/loading"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone" />
+                android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="30dp"
+                    android:layout_marginTop="60dp"
+                    android:text="Formular de inregistrare" />
+
+                <TextView
+                    android:id="@+id/nameTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Nume" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="Popescu"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/surnameTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Prenume" />
+
+                <EditText
+                    android:id="@+id/surname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="Ioan"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/usernameTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Username" />
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="IoanPopescu123"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/emailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Adresa email" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="IoanPopescu@yahoo.com"
+                    android:textSize="20dp"
+                    android:inputType="textEmailAddress"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/passwordTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Parola" />
+
+                <EditText
+                    android:id="@+id/password1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="parola"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/passwordConfirmTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Confirmarea Parolei" />
+
+                <EditText
+                    android:id="@+id/password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="parola"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/addressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Adresa" />
+
+                <EditText
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="Strada Pantelimon, Nr. 100"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/phoneTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Numar telefon" />
+
+                <EditText
+                    android:id="@+id/phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="0740887000"
+                    android:textSize="20dp"
+                    android:inputType="phone"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/distanceTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Distanta maxima pentru cerut ajutor" />
+
+                <EditText
+                    android:id="@+id/max_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="5 km"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                    android:id="@+id/startTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Timpul de inceput pentru cereri" />
+
+                <EditText
+                    android:id="@+id/startHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="08:00:00"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true" />
+
+                <TextView
+                android:id="@+id/finalTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/action_register" />
-        </LinearLayout>
+                android:textSize="20dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Timpul de sfarsit pentru cereri" />
 
+                <EditText
+                    android:id="@+id/finalHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="40dp"
+                    android:hint="17:30:00"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingBottom="30dp">
+
+                <EditText
+                    android:id="@+id/error_message"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="45dp"
+                    android:ems="10"
+                    android:text="" />
+
+                <ProgressBar
+                    android:id="@+id/loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/action_register" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
