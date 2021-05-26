@@ -103,13 +103,13 @@ class LoginActivity : AppCompatActivity() {
 
         login.setOnClickListener {
             loading.visibility = View.VISIBLE
-            /*
+
             loginViewModel.login(
                 email.text.toString(),
                 password.text.toString()
-            )*/
+            )
 
-            startHomeActivity()
+            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {

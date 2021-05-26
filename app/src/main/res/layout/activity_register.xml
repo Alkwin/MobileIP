@@ -54,7 +54,8 @@
                     android:hint="Popescu"
                     android:textSize="20dp"
                     android:inputType="text"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="Popescu"/>
 
                 <TextView
                     android:id="@+id/surnameTitle"
@@ -75,7 +76,8 @@
                     android:hint="Ioan"
                     android:textSize="20dp"
                     android:inputType="text"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="Ioan"/>
 
                 <TextView
                     android:id="@+id/usernameTitle"
@@ -85,7 +87,8 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Username" />
+                    android:text="Username"
+                    />
 
                 <EditText
                     android:id="@+id/username"
@@ -96,7 +99,8 @@
                     android:hint="IoanPopescu123"
                     android:textSize="20dp"
                     android:inputType="text"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="IoanPopescu123"/>
 
                 <TextView
                     android:id="@+id/emailTitle"
@@ -117,7 +121,8 @@
                     android:hint="IoanPopescu@yahoo.com"
                     android:textSize="20dp"
                     android:inputType="textEmailAddress"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="IoanPopescu@yahoo.com"/>
 
                 <TextView
                     android:id="@+id/passwordTitle"
@@ -140,7 +145,8 @@
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textSize="20dp"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="1234"/>
 
                 <TextView
                     android:id="@+id/passwordConfirmTitle"
@@ -163,7 +169,8 @@
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textSize="20dp"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="1234"/>
 
                 <TextView
                     android:id="@+id/addressTitle"
@@ -184,7 +191,8 @@
                     android:hint="Strada Pantelimon, Nr. 100"
                     android:textSize="20dp"
                     android:inputType="text"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="Strada Pantelimon, Nr. 100"/>
 
                 <TextView
                     android:id="@+id/phoneTitle"
@@ -205,7 +213,8 @@
                     android:hint="0740887000"
                     android:textSize="20dp"
                     android:inputType="phone"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="0740887000"/>
 
                 <TextView
                     android:id="@+id/distanceTitle"
@@ -215,7 +224,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Distanta maxima pentru cerut ajutor" />
+                    android:text="Distanta maxima pentru ajutor (km)" />
 
                 <EditText
                     android:id="@+id/max_distance"
@@ -223,10 +232,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="5 km"
+                    android:hint="5"
                     android:textSize="20dp"
                     android:inputType="number"
-                    android:selectAllOnFocus="true" />
+                    android:selectAllOnFocus="true"
+                    android:text="5"/>
 
                 <TextView
                     android:id="@+id/startTitle"
@@ -246,18 +256,19 @@
                     android:layout_marginRight="40dp"
                     android:hint="08:00:00"
                     android:textSize="20dp"
-                    android:inputType="number"
-                    android:selectAllOnFocus="true" />
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:text="08:00:00"/>
 
                 <TextView
-                android:id="@+id/finalTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="20dp"
-                android:text="Timpul de sfarsit pentru cereri" />
+                    android:id="@+id/finalTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Timpul de sfarsit pentru cereri" />
 
                 <EditText
                     android:id="@+id/finalHour"
@@ -267,8 +278,10 @@
                     android:layout_marginRight="40dp"
                     android:hint="17:30:00"
                     android:textSize="20dp"
-                    android:inputType="number"
-                    android:selectAllOnFocus="true" />
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:text="17:30:00"/>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -283,7 +296,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="45dp"
                     android:ems="10"
-                    android:text="" />
+                    />
 
                 <ProgressBar
                     android:id="@+id/loading"
