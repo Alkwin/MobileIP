@@ -53,7 +53,7 @@ class HomeViewModel : ViewModel() {
         }.flowOn(Dispatchers.IO).asLiveData()
     }
 
-    private val selectHelperRequest = MutableLiveData<SelectHelperRequest>()
+    val selectHelperRequest = MutableLiveData<SelectHelperRequest>()
 
     val selectHelperAnswer = selectHelperRequest.switchMap {
         flow {
@@ -127,7 +127,10 @@ class HomeViewModel : ViewModel() {
         return alert
     }
 
+    var selectedHelper: HelperData? = null
+
     private fun helperSelected(helper: HelperData) {
+        selectedHelper = helper
         selectHelperRequest.postValue(
             SelectHelperRequest(
                 AuthenticationManager.userName,

@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.cringe.mobileip.R
 import com.cringe.mobileip.databinding.FragmentHelperBinding
+import com.cringe.mobileip.server.model.needier.database.RequestNeedierRequest
+import com.cringe.mobileip.server.model.utils.Result
 
 class HelperFragment : Fragment() {
 
@@ -20,8 +22,6 @@ class HelperFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,22 +30,23 @@ class HelperFragment : Fragment() {
 
         helperViewModel = ViewModelProvider(this).get(HelperViewModel::class.java)
 
-        with(binding) {
-
+        helperViewModel.currentOrder.observe(viewLifecycleOwner) {
+            if (it is Result.Success)
+                updateUI(it.data)
         }
 
-        updateUI()
+        helperViewModel.startRequesting()
 
         return binding.root
     }
 
-    private fun updateUI() {
+    private fun updateUI(order: RequestNeedierRequest) {
         with(binding) {
-            val order = helperViewModel.currentOrder
-            if (order != null) {
+            if (order.username.isNotEmpty()) {
                 with(order) {
-                    usernameTextView.text = userName
-                    tagsTextView.text = tags.toString()
+                    usernameTextView.text = username
+                    tagsTextView.text = tags .map { "${it.key}${if(it.value >= 0) ": ${it.value}" else ""}"  }
+                        .joinToString(separator = "\n")
                     detailsTextView.text = details
                 }
                 finishOrderButton.isEnabled = true

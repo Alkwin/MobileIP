@@ -20,6 +20,7 @@ import com.cringe.mobileip.server.model.utils.tags.Service
 import com.cringe.mobileip.server.model.utils.tags.Tag
 import com.cringe.mobileip.ui.home.adapters.TagStatus
 import com.cringe.mobileip.ui.home.adapters.TagsAdapter
+import com.cringe.mobileip.ui.orders.needier.NeedierFragment
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -141,6 +142,7 @@ class HomeFragment : Fragment() {
             when (it) {
                 is Result.Success -> {
                     Toast.makeText(requireContext(), "Matched", Toast.LENGTH_LONG).show()
+                    NeedierFragment.currentOrderHelperData = homeViewModel.selectedHelper
                 }
                 is Result.Failure -> {
                     Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()

@@ -2,21 +2,20 @@ package com.cringe.mobileip.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import android.opengl.Visibility
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.lifecycle.lifecycleScope
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.MainActivity
+import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.databinding.ActivityLoginBinding
+import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
 import com.cringe.mobileip.ui.register.RegisterActivity
 import com.cringe.mobileip.utils.afterTextChanged
-import com.cringe.mobileip.server.model.utils.Result
 
 
 class LoginActivity : AppCompatActivity() {
@@ -143,7 +142,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startHomeActivity() {
         val newIntent = Intent(this, MainActivity::class.java)
-        newIntent.putExtra(MainActivity.INTENT_EXTRA_IS_HELPER, currentUserType == "Helper")
+        AuthenticationManager.isHelper = currentUserType == "Helper"
         startActivity(newIntent)
     }
 }

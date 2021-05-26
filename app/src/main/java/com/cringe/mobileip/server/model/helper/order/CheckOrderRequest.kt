@@ -1,4 +1,8 @@
 package com.cringe.mobileip.server.model.helper.order
 
-class CheckOrderRequest (
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class CheckOrderRequest(
+    val username: String
 )

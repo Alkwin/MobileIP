@@ -21,4 +21,7 @@ object Endpoints {
     val requestNeedier: String = "$BASE_URL_MATCH/api/v1/requestNeeder"
     //val requestTags: String = "$BASE_URL_MATCH/api/v1/needs"
     val requestTags: String = "https://966bc5f8-dd6c-4910-8763-f5fea3112c62.mock.pstmn.io/api/v1/needs"
+
+//    val neederToHelp: String = "$BASE_URL_MATCH/neederToHelp"
+    const val neederToHelp = "https://303a52bb-bf56-4273-a2e1-ed89d4ab727e.mock.pstmn.io/neederToHelp"
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cringe.mobileip.databinding.FragmentNeedierBinding
+import com.cringe.mobileip.server.model.utils.HelperData
 
 class NeedierFragment : Fragment() {
 
@@ -23,8 +24,16 @@ class NeedierFragment : Fragment() {
         _binding = FragmentNeedierBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        with(binding) {
-
+        currentOrderHelperData?.let {
+            with(binding.data) {
+                username.text = it.username
+                address.text = it.adress
+                distance.text = it.distance.toString()
+                score.text = it.score.toString()
+                commonResources.text = it.commonResources
+                    .map { "${it.key}${if(it.value >= 0) ": ${it.value}" else ""}"  }
+                    .joinToString(separator = "\n")
+            }
         }
 
         return root
@@ -33,5 +42,9 @@ class NeedierFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        var currentOrderHelperData: HelperData? = null
     }
 }
