@@ -5,4 +5,5 @@ object Endpoints {
     var loginURL: String = "$BASE_URL_AUTH/users/login"
     var registerURL: String = "$BASE_URL_AUTH/users/register"
     val requestNeedier: String = "https://all-db.herokuapp.com/api/v1/requestNeeder"
+    val statisticsURL : String = "https://all-db.herokuapp.com/api/v1/statisticForUser"
 }

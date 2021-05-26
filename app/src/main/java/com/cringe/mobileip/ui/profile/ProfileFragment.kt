@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -14,8 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.databinding.FragmentProfileBinding
 import com.cringe.mobileip.data.managers.ProfileManager
+import com.cringe.mobileip.server.model.profileinfo.InfoResponse.Companion.savedCountHelper
+import com.cringe.mobileip.server.model.profileinfo.InfoResponse.Companion.savedCountNeeder
+import com.cringe.mobileip.server.model.profileinfo.InfoResponse.Companion.serverInfoSaved
 import com.cringe.mobileip.ui.login.LoginActivity
-import com.squareup.picasso.Picasso
 
 
 class ProfileFragment : Fragment() {
@@ -27,7 +28,9 @@ class ProfileFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    companion object{
 
+    }
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,21 +45,48 @@ class ProfileFragment : Fragment() {
 
         profileList = binding.profileList
         val test = ProfileManager();
-        val pageInfo = test.getInfo().data;
+        val pageInfo = test.getInfo();
 
+        /* For getting the file from server
         val profileImage: ImageView = binding.profileImage
         Picasso.get().load(pageInfo.avatar).into(profileImage)
+        */
+        if(serverInfoSaved){
+            val profileName: TextView = binding.profileName
+            profileName.text = AuthenticationManager.userName
 
+            val profileAddress: TextView = binding.profileAddress
+            profileAddress.text = "Count Helper: " + savedCountHelper
 
-        val profileName: TextView = binding.profileName
-        profileName.text = pageInfo.first_name + " " + pageInfo.last_name
+            val profileNumber: TextView = binding.profileNumber
+            profileNumber.text = "Count Needer: " + savedCountNeeder
+        }
+        else {
+            if (pageInfo.success == false) {
 
-        val profileAddress: TextView = binding.profileAddress
-        profileAddress.text = pageInfo.email
+                val profileName: TextView = binding.profileName
+                profileName.text = ""
 
-        val profileNumber: TextView = binding.profileNumber
-        profileNumber.text = pageInfo.id.toString()
+                val profileAddress: TextView = binding.profileAddress
+                profileAddress.text = "Eroare de la server"
 
+                val profileNumber: TextView = binding.profileNumber
+                profileNumber.text = ""
+            } else {
+                val profileName: TextView = binding.profileName
+                profileName.text = AuthenticationManager.userName
+
+                val profileAddress: TextView = binding.profileAddress
+                profileAddress.text = "Count Helper: " + pageInfo.countHelper
+
+                val profileNumber: TextView = binding.profileNumber
+                profileNumber.text = "Count Needer: " + pageInfo.countNeeder
+
+                serverInfoSaved = true;
+                savedCountNeeder = pageInfo.countNeeder;
+                savedCountHelper = pageInfo.countHelper
+            }
+        }
         binding.logOutButton.setOnClickListener() {
             AuthenticationManager.logout()
             val newIntent = Intent(activity, LoginActivity::class.java)
