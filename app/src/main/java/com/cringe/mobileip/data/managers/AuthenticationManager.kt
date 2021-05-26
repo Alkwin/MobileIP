@@ -1,6 +1,5 @@
 package com.cringe.mobileip.data.managers
 
-import com.cringe.mobileip.MainActivity
 import com.cringe.mobileip.server.model.login.LoginAnswer
 import com.cringe.mobileip.server.model.register.RegisterAnswer
 import com.cringe.mobileip.server.model.register.RegisterUserData
@@ -17,10 +16,12 @@ class AuthenticationManager(val loginManager: LoginManager,
 ) {
 
     companion object {
+        var isHelper: Boolean? = null
         var user: User? = null
         var token: String = ""
         var userName: String = ""
         fun logout() {
+            isHelper = null
             user = null
             token = ""
             userName = ""

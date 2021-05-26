@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.home.helper
+package com.cringe.mobileip.ui.orders.helper
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

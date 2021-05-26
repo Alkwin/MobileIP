@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cringe.mobileip.ui.home.HomeManagerFragment"
+        android:name="com.cringe.mobileip.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home_manager" />
+        tools:layout="@layout/fragment_orders_manager" />
 
     <fragment
         android:id="@+id/navigation_needier"
-        android:name="com.cringe.mobileip.ui.home.needier.NeedierFragment"
+        android:name="com.cringe.mobileip.ui.orders.needier.NeedierFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_needier" />
 
     <fragment
         android:id="@+id/navigation_helper"
-        android:name="com.cringe.mobileip.ui.home.helper.HelperFragment"
+        android:name="com.cringe.mobileip.ui.orders.helper.HelperFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_helper" />
 
     <fragment
         android:id="@+id/navigation_orders"
-        android:name="com.cringe.mobileip.ui.orders.OrdersFragment"
+        android:name="com.cringe.mobileip.ui.orders.OrdersManagerFragment"
         android:label="@string/title_orders"
         tools:layout="@layout/fragment_orders" />
 

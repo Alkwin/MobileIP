@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.home.needier.adapters
+package com.cringe.mobileip.ui.home.adapters
 
 import android.app.Dialog
 import android.content.Context

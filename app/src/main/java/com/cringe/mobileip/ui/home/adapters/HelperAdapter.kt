@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.home.needier.adapters
+package com.cringe.mobileip.ui.home.adapters
 
 import android.view.LayoutInflater
 import android.view.View

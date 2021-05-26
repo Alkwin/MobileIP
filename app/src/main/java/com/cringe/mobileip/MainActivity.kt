@@ -2,14 +2,14 @@ package com.cringe.mobileip
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,8 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val isHelper = intent.getBooleanExtra(INTENT_EXTRA_IS_HELPER, true)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -49,19 +47,18 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate
                 .setDefaultNightMode(
                     AppCompatDelegate
-                        .MODE_NIGHT_YES);
-
+                        .MODE_NIGHT_YES)
         }
         else {
             AppCompatDelegate
                 .setDefaultNightMode(
                     AppCompatDelegate
-                        .MODE_NIGHT_NO);
+                        .MODE_NIGHT_NO)
         }
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.navigation_home) {
-                if (isHelper) {
+            if (destination.id == R.id.navigation_orders) {
+                if (AuthenticationManager.isHelper == true) {
                     navController.navigate(R.id.navigation_helper)
                 } else {
                     navController.navigate(R.id.navigation_needier)

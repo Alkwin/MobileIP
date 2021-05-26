@@ -1,4 +1,4 @@
-package com.cringe.mobileip.ui.home.needier.adapters
+package com.cringe.mobileip.ui.home.adapters
 
 import com.cringe.mobileip.server.model.utils.tags.Tag
 import com.cringe.mobileip.server.model.utils.tags.TagTypeAndWeight
