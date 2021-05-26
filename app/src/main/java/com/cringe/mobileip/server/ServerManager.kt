@@ -30,11 +30,13 @@ class ServerManager {
         //val response = client.request<V>(reqURL) did not work for some reason (to directly deserialize it)
         val response = client.request<String>(reqURL) {
             method = reqMethod
-            body = reqBody
-            if(AuthenticationManager.token!="") {
+            if(reqMethod != HttpMethod.Get) {
+                body = reqBody
+                contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
+            }
+            if(AuthenticationManager.token != "") {
                 header("Authorization", "Basic ${AuthenticationManager.token}")
             }
-            contentType(ContentType.Application.Json.withParameter("charset", "utf-8"))
         }
         return Json.decodeFromString(response)
     }

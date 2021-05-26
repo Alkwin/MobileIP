@@ -16,4 +16,8 @@ object Endpoints {
     //    const val choseHelper = "${BASE_URL_DB}/chosenHelper"
     const val choseHelper = "https://43f9bbad-d979-4b24-8997-b61d84ddb466.mock.pstmn.io/chosenHelper"
     val statisticsURL : String = "https://all-db.herokuapp.com/api/v1/statisticForUser"
+
+    val requestNeedier: String = "$BASE_URL_MATCH/api/v1/requestNeeder"
+    //val requestTags: String = "$BASE_URL_MATCH/api/v1/needs"
+    val requestTags: String = "https://966bc5f8-dd6c-4910-8763-f5fea3112c62.mock.pstmn.io/api/v1/needs"
 }

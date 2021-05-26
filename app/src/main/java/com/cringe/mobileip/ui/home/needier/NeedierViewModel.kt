@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cringe.mobileip.R
 import com.cringe.mobileip.data.managers.AuthenticationManager
 import com.cringe.mobileip.data.managers.NeedierManager
+import com.cringe.mobileip.data.managers.TagsManager
 import com.cringe.mobileip.server.model.needier.database.RequestNeedierRequest
 import com.cringe.mobileip.server.model.needier.selectHelper.SelectHelperRequest
 import com.cringe.mobileip.server.model.utils.HelperData
@@ -23,7 +24,16 @@ import kotlin.random.Random
 
 class NeedierViewModel : ViewModel() {
     private val needierManager = NeedierManager()
+    private val tagManager = TagsManager()
 
+    private val requestLiveData = MutableLiveData<RequestNeedierRequest>()
+    private val tagRequestLiveData = MutableLiveData<String>()
+
+    val tagAnswerLiveData = tagRequestLiveData.switchMap {
+        flow {
+            emit(tagManager.requestTags())
+        }.flowOn(Dispatchers.IO).asLiveData()
+    }
     private val databaseRequest = MutableLiveData<RequestNeedierRequest>()
 
     val databaseAnswer = databaseRequest.switchMap {
@@ -46,6 +56,12 @@ class NeedierViewModel : ViewModel() {
         flow {
             emit(needierManager.selectHelper(it))
         }.flowOn(Dispatchers.IO).asLiveData()
+    }
+
+    fun requestTags() {
+        tagRequestLiveData.postValue(
+            ""
+        )
     }
 
     fun sendRequest(tags: List<TagStatus>, details: String) {
@@ -93,44 +109,9 @@ class NeedierViewModel : ViewModel() {
             )
         )
     }
-
-    val tags = listOf(
-        "Mancare",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie",
-        "Transport",
-        "Alimente",
-        "Haide",
-        "Medicamente",
-        "Igiena",
-        "Atentie"
-    ).map{ TagStatus(Tag(it), if (Random.nextBoolean()) Service(false) else Product(0.0)) }.toMutableList()
+companion object {
+        var tags = listOf(
+            "N/A"
+        ).map { TagStatus(Tag(it), if (Random.nextBoolean()) Service(false) else Product(0.0)) }.toMutableList()
+    }
 }

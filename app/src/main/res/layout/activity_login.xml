@@ -92,9 +92,9 @@
 
     <TextView
         android:id="@+id/error_message"
-        android:layout_width="116dp"
-        android:layout_height="87dp"
-        android:text="text"
+        android:layout_width="148dp"
+        android:layout_height="16dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
