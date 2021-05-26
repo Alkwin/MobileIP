@@ -31,7 +31,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/gifView"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:src="@drawable/running_stick_man"
             android:layout_marginBottom="50dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
                 android:layout_marginBottom="40dp"
                 android:gravity="center"
                 android:text="Comanda curenta"
-                android:textColor="@color/design_default_color_on_primary"
+                android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="30sp"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -71,16 +71,17 @@
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
                     android:text="Persoana:"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/usernameTextView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
                     android:text="N/A"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -96,16 +97,17 @@
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
                     android:text="Taguri:"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tagsTextView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
                     android:text="N/A\nN/A"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -121,16 +123,17 @@
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
                     android:text="Detalii:"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/detailsTextView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
                     android:text="N/A"
-                    android:textColor="@color/design_default_color_on_primary"
+                    android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -151,7 +154,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/appCompatButton"
+            android:id="@+id/finishOrderButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"

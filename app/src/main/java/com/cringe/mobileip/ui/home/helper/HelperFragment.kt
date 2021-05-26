@@ -20,10 +20,7 @@ class HelperFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +31,32 @@ class HelperFragment : Fragment() {
         helperViewModel = ViewModelProvider(this).get(HelperViewModel::class.java)
 
         with(binding) {
-            Glide.with(this@HelperFragment).load(R.drawable.running_stick_man).into(gifView)
+
         }
 
+        updateUI()
+
         return binding.root
+    }
+
+    private fun updateUI() {
+        with(binding) {
+            val order = helperViewModel.currentOrder
+            if (order != null) {
+                with(order) {
+                    usernameTextView.text = userName
+                    tagsTextView.text = tags.toString()
+                    detailsTextView.text = details
+                }
+                finishOrderButton.isEnabled = true
+                Glide.with(this@HelperFragment).load(R.drawable.running_stick_man).into(gifView)
+            } else {
+                Glide.with(this@HelperFragment).load(R.drawable.sitting_stick_man).into(gifView)
+                usernameTextView.text = "N/A"
+                tagsTextView.text = "N/A"
+                detailsTextView.text = "N/A"
+                finishOrderButton.isEnabled = false
+            }
+        }
     }
 }
