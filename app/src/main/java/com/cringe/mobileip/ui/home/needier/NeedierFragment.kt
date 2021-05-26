@@ -48,10 +48,38 @@ class NeedierFragment : Fragment() {
             }
         }
 
-        needierViewModel.answerLiveData.observe(viewLifecycleOwner) {
+        needierViewModel.databaseAnswer.observe(viewLifecycleOwner) {
             when(it) {
                 is Result.Success -> {
-                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_LONG).show()
+                    needierViewModel.sendMatchRequest()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()
+                }
+                is Result.Exception -> {
+                    Toast.makeText(requireContext(), "Exception", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        needierViewModel.matchAnswer.observe(viewLifecycleOwner) {
+            when(it) {
+                is Result.Success -> {
+                    needierViewModel.getChoseHelperAlert(requireContext(), it.data.helperResponses).show()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()
+                }
+                is Result.Exception -> {
+                    Toast.makeText(requireContext(), "Exception", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
+        needierViewModel.selectHelperAnswer.observe(viewLifecycleOwner){
+            when(it) {
+                is Result.Success -> {
+                    Toast.makeText(requireContext(), "Matched", Toast.LENGTH_LONG).show()
                 }
                 is Result.Failure -> {
                     Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()

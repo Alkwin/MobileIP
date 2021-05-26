@@ -1,4 +1,4 @@
-package com.cringe.mobileip.server.model.needier.request
+package com.cringe.mobileip.server.model.needier.database
 
 import kotlinx.serialization.Serializable
 
