@@ -57,6 +57,7 @@ class HomeFragment : Fragment() {
             sendRequestButton.setOnClickListener {
                 pressedSendButton()
             }
+            binding.titleMain.text = if(AuthenticationManager.isHelper == true) "Ofera ajutor" else "Cere ajutor"
         }
 
         if(HomeViewModel.tags.size < 2) {
@@ -67,6 +68,38 @@ class HomeFragment : Fragment() {
             registerNeederListeners()
         } else {
             registerHelperListeners()
+        }
+
+        homeViewModel.tagAnswerLiveData.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Success -> {
+                    val newMap = it.data.map { tagPair ->
+                        TagStatus(
+                            Tag(tagPair.key),
+                            if (tagPair.value == "service") Service(false) else Product(0.0)
+                        )
+                    }.toMutableList()
+                    Handler(Looper.getMainLooper()).post {
+                        HomeViewModel.tags.clear()
+                        HomeViewModel.tags.addAll(newMap)
+                        binding.recyclerView.adapter?.notifyDataSetChanged()
+                    }
+                }
+                is Result.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Failure when requesting tags",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                is Result.Exception -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Exception when requesting tags",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
 
         return root
@@ -149,38 +182,6 @@ class HomeFragment : Fragment() {
                 }
                 is Result.Exception -> {
                     Toast.makeText(requireContext(), "Exception", Toast.LENGTH_LONG).show()
-                }
-            }
-        }
-
-        homeViewModel.tagAnswerLiveData.observe(viewLifecycleOwner) {
-            when (it) {
-                is Result.Success -> {
-                    val newMap = it.data.map { tagPair ->
-                        TagStatus(
-                            Tag(tagPair.key),
-                            if (tagPair.value == "service") Service(false) else Product(0.0)
-                        )
-                    }.toMutableList()
-                    Handler(Looper.getMainLooper()).post {
-                        HomeViewModel.tags.clear()
-                        HomeViewModel.tags.addAll(newMap)
-                        binding.recyclerView.adapter?.notifyDataSetChanged()
-                    }
-                }
-                is Result.Failure -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Failure when requesting tags",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is Result.Exception -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Exception when requesting tags",
-                        Toast.LENGTH_LONG
-                    ).show()
                 }
             }
         }
