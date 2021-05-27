@@ -25,6 +25,9 @@ import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.flexbox.JustifyContent
+import mu.KotlinLogging
+
+private val logger = KotlinLogging.logger {  }
 
 class HomeFragment : Fragment() {
 
@@ -128,6 +131,7 @@ class HomeFragment : Fragment() {
 
     private fun registerHelperListeners() {
         homeViewModel.sendHelperAnswer.observe(viewLifecycleOwner) {
+            logger.info { "Sending selected helper: $it" }
             when (it) {
                 is Result.Success -> {
                     Toast.makeText(requireContext(), "Sent", Toast.LENGTH_LONG).show()
@@ -143,6 +147,7 @@ class HomeFragment : Fragment() {
 
     private fun registerNeederListeners() {
         homeViewModel.databaseAnswer.observe(viewLifecycleOwner) {
+            logger.info { "Received confirmation: $it; Sending a match request" }
             when (it) {
                 is Result.Success -> {
                     homeViewModel.sendMatchRequest()
@@ -157,6 +162,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.matchAnswer.observe(viewLifecycleOwner) {
+            logger.info { "Received a list of helpers to choose from: $it" }
             when (it) {
                 is Result.Success -> {
                     homeViewModel.getChoseHelperAlert(requireContext(), it.data.helperResponses)
@@ -172,6 +178,7 @@ class HomeFragment : Fragment() {
         }
 
         homeViewModel.selectHelperAnswer.observe(viewLifecycleOwner) {
+            logger.info { "Matched with: $it" }
             when (it) {
                 is Result.Success -> {
                     Toast.makeText(requireContext(), "Matched", Toast.LENGTH_LONG).show()

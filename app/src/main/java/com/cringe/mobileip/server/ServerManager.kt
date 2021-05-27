@@ -26,6 +26,9 @@ class ServerManager {
                 logger = Logger.DEFAULT
                 level = LogLevel.ALL
             }
+            // should add by default kotlinx.serialization.json
+            // and remove the explicit serialization from all sendRequest calls
+            // and change reqBody to : Any
         }
         //val response = client.request<V>(reqURL) did not work for some reason (to directly deserialize it)
         val response = client.request<String>(reqURL) {
