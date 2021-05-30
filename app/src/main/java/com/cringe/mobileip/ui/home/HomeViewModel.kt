@@ -21,8 +21,11 @@ import com.cringe.mobileip.ui.home.adapters.TagStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import mu.KotlinLogging
 import java.util.*
 import kotlin.random.Random
+
+private val logger = KotlinLogging.logger {  }
 
 class HomeViewModel : ViewModel() {
     private val needierManager = NeedierManager()
@@ -131,6 +134,7 @@ class HomeViewModel : ViewModel() {
 
     private fun helperSelected(helper: HelperData) {
         selectedHelper = helper
+        logger.info { "Selected helper: $selectedHelper" }
         selectHelperRequest.postValue(
             SelectHelperRequest(
                 AuthenticationManager.userName,

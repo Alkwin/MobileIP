@@ -16,12 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:text="De scos" />
-
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="match_parent"

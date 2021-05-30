@@ -16,7 +16,9 @@ import com.cringe.mobileip.server.model.utils.Result
 import com.cringe.mobileip.ui.login.utils.LoginViewModelFactory
 import com.cringe.mobileip.ui.register.RegisterActivity
 import com.cringe.mobileip.utils.afterTextChanged
+import mu.KotlinLogging
 
+private val logger = KotlinLogging.logger {  }
 
 class LoginActivity : AppCompatActivity() {
 
@@ -58,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.answerLiveData.observe(this@LoginActivity, Observer {
             loading.visibility = View.INVISIBLE
+            logger.info { "Received login answer: $it" }
             when(it) {
                 is Result.Success -> {
                     startHomeActivity()
@@ -103,12 +106,12 @@ class LoginActivity : AppCompatActivity() {
         login.setOnClickListener {
             loading.visibility = View.VISIBLE
 
-            /*loginViewModel.login(
+            loginViewModel.login(
                 email.text.toString(),
                 password.text.toString()
-            )*/
+            )
 
-            startHomeActivity()
+            //startHomeActivity()
         }
 
         binding.register?.setOnClickListener {
