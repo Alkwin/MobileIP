@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -33,6 +34,21 @@ class HelperFragment : Fragment() {
         helperViewModel.currentOrder.observe(viewLifecycleOwner) {
             if (it is Result.Success)
                 updateUI(it.data)
+        }
+
+        binding.finishOrderButton.setOnClickListener { helperViewModel.finishOrder() }
+
+        helperViewModel.finishOrderAnswer.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Success -> {
+                    Toast.makeText(requireContext(), "Finished order", Toast.LENGTH_LONG).show()
+                }
+                is Result.Failure -> {
+                    Toast.makeText(requireContext(), "Failure", Toast.LENGTH_LONG).show()
+                }
+                is Result.Exception ->
+                    Toast.makeText(requireContext(), "Exception", Toast.LENGTH_LONG).show()
+            }
         }
 
         helperViewModel.startRequesting()

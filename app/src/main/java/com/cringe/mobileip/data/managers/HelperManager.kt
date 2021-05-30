@@ -1,6 +1,8 @@
 package com.cringe.mobileip.data.managers
 
 import com.cringe.mobileip.server.ServerManager
+import com.cringe.mobileip.server.model.helper.finish.FinishOrderAnswer
+import com.cringe.mobileip.server.model.helper.finish.FinishOrderRequest
 import com.cringe.mobileip.server.model.helper.form.HelperFormAnswer
 import com.cringe.mobileip.server.model.helper.form.HelperFormRequest
 import com.cringe.mobileip.server.model.helper.order.CheckOrderRequest
@@ -52,6 +54,28 @@ class HelperManager {
         } catch (e: Throwable) {
             e.printStackTrace()
             return Exception(IOException("Server communication error", e))
+        }
+    }
+
+    fun finishOrder(request: FinishOrderRequest): Result<FinishOrderAnswer> {
+        val serverManager = ServerManager()
+        var response: FinishOrderAnswer
+        return try {
+            runBlocking {
+                response = serverManager.sendRequest(
+                    Json.encodeToString(request),
+                    Endpoints.modifyAvailable,
+                    HttpMethod.Post
+                )
+            }
+            return if(response.message == "1") {
+                Success(response)
+            } else {
+                Failure(response)
+            }
+        } catch (e: Throwable) {
+            e.printStackTrace()
+            Exception(IOException("Server communication error", e))
         }
     }
 }
