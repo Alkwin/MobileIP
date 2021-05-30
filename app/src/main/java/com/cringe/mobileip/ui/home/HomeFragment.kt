@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
             sendRequestButton.setOnClickListener {
                 pressedSendButton()
             }
-            binding.titleMain.text = if(AuthenticationManager.isHelper == true) "Ofera ajutor" else "Cere ajutor"
+            binding.titleMain.text = requireContext().getString(if(AuthenticationManager.isHelper == true) R.string.home_title_helper else R.string.home_title_needer)
         }
 
         if(HomeViewModel.tags.size < 2) {

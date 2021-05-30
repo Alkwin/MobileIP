@@ -13,7 +13,7 @@
         android:background="@drawable/home_accent_top"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Detalii comanda"
+        android:text="@string/needer_title"
         android:textColor="@color/design_default_color_on_primary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"

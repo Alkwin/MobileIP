@@ -28,7 +28,7 @@
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:paddingEnd="0dp"
-                android:text="Tag: "
+                android:text="@string/weight_dialog_tag_title"
                 android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -41,7 +41,7 @@
             android:paddingBottom="10dp"
             android:paddingEnd="10dp"
             android:textColor="@color/accent"
-            android:text="Tag name"
+            android:text="@string/weight_dialog_tag_text"
             android:textSize="20sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -49,14 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Adauga cantitatea necesară"
+            android:text="@string/weight_dialog_description"
             android:textSize="10sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/quantityEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Click aici pentru a adăuga"
+            android:hint="@string/wight_dialog_hint"
             android:inputType="numberSigned"
             android:padding="10dp"
             android:gravity="center"

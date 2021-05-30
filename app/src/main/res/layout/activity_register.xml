@@ -16,7 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -33,7 +32,7 @@
                     android:textAlignment="center"
                     android:textSize="30dp"
                     android:layout_marginTop="60dp"
-                    android:text="Formular de inregistrare" />
+                    android:text="@string/register_title" />
 
                 <TextView
                     android:id="@+id/nameTitle"
@@ -43,7 +42,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Nume" />
+                    android:text="@string/register_name_title" />
 
                 <EditText
                     android:id="@+id/name"
@@ -51,11 +50,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="Popescu"
+                    android:hint="@string/register_name_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="Popescu"/>
+                    android:text="@string/register_name_text"/>
 
                 <TextView
                     android:id="@+id/surnameTitle"
@@ -65,7 +64,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Prenume" />
+                    android:text="@string/register_surname_title" />
 
                 <EditText
                     android:id="@+id/surname"
@@ -73,11 +72,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="Ioan"
+                    android:hint="@string/register_surname_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="Ioan"/>
+                    android:text="@string/register_surname_text"/>
 
                 <TextView
                     android:id="@+id/usernameTitle"
@@ -87,7 +86,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Username"
+                    android:text="@string/register_username_title"
                     />
 
                 <EditText
@@ -96,11 +95,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="IoanPopescu123"
+                    android:hint="@string/register_username_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="IoanPopescu123"/>
+                    android:text="@string/register_username_text"/>
 
                 <TextView
                     android:id="@+id/emailTitle"
@@ -110,7 +109,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Adresa email" />
+                    android:text="@string/register_email_title" />
 
                 <EditText
                     android:id="@+id/email"
@@ -118,11 +117,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="IoanPopescu@yahoo.com"
+                    android:hint="@string/register_email_hint"
                     android:textSize="20dp"
                     android:inputType="textEmailAddress"
                     android:selectAllOnFocus="true"
-                    android:text="IoanPopescu@yahoo.com"/>
+                    android:text="@string/register_email_text"/>
 
                 <TextView
                     android:id="@+id/passwordTitle"
@@ -132,7 +131,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Parola" />
+                    android:text="@string/register_password_title" />
 
                 <EditText
                     android:id="@+id/password1"
@@ -140,13 +139,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="parola"
+                    android:hint="@string/register_password_hint"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textSize="20dp"
                     android:selectAllOnFocus="true"
-                    android:text="1234"/>
+                    android:text="@string/register_password_text"/>
 
                 <TextView
                     android:id="@+id/passwordConfirmTitle"
@@ -156,7 +155,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Confirmarea Parolei" />
+                    android:text="@string/register_password_confirm_title" />
 
                 <EditText
                     android:id="@+id/password2"
@@ -164,13 +163,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="parola"
+                    android:hint="@string/register_password_confirm_hint"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textSize="20dp"
                     android:selectAllOnFocus="true"
-                    android:text="1234"/>
+                    android:text="@string/register_password_confirm_text"/>
 
                 <TextView
                     android:id="@+id/addressTitle"
@@ -180,7 +179,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Adresa" />
+                    android:text="@string/register_address_title" />
 
                 <EditText
                     android:id="@+id/address"
@@ -188,11 +187,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="Strada Pantelimon, Nr. 100"
+                    android:hint="@string/register_address_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="Strada Pantelimon, Nr. 100"/>
+                    android:text="@string/register_address_text"/>
 
                 <TextView
                     android:id="@+id/phoneTitle"
@@ -202,7 +201,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Numar telefon" />
+                    android:text="@string/register_number_title" />
 
                 <EditText
                     android:id="@+id/phone_number"
@@ -210,11 +209,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="0740887000"
+                    android:hint="@string/register_number_hint"
                     android:textSize="20dp"
                     android:inputType="phone"
                     android:selectAllOnFocus="true"
-                    android:text="0740887000"/>
+                    android:text="@string/register_number_text"/>
 
                 <TextView
                     android:id="@+id/distanceTitle"
@@ -224,7 +223,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Distanta maxima pentru ajutor (km)" />
+                    android:text="@string/register_distance_title" />
 
                 <EditText
                     android:id="@+id/max_distance"
@@ -232,11 +231,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="5"
+                    android:hint="@string/register_distance_hint"
                     android:textSize="20dp"
                     android:inputType="number"
                     android:selectAllOnFocus="true"
-                    android:text="5"/>
+                    android:text="@string/register_distance_text"/>
 
                 <TextView
                     android:id="@+id/startTitle"
@@ -246,7 +245,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Timpul de inceput pentru cereri" />
+                    android:text="@string/register_start_title" />
 
                 <EditText
                     android:id="@+id/startHour"
@@ -254,11 +253,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="08:00:00"
+                    android:hint="@string/register_start_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="08:00:00"/>
+                    android:text="@string/register_start_text"/>
 
                 <TextView
                     android:id="@+id/finalTitle"
@@ -268,7 +267,7 @@
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="20dp"
-                    android:text="Timpul de sfarsit pentru cereri" />
+                    android:text="@string/register_final_title" />
 
                 <EditText
                     android:id="@+id/finalHour"
@@ -276,11 +275,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
                     android:layout_marginRight="40dp"
-                    android:hint="17:30:00"
+                    android:hint="@string/register_final_hint"
                     android:textSize="20dp"
                     android:inputType="text"
                     android:selectAllOnFocus="true"
-                    android:text="17:30:00"/>
+                    android:text="@string/register_final_text"/>
 
 
                 <LinearLayout

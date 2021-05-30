@@ -27,7 +27,7 @@
         android:id="@+id/navigation_orders"
         android:name="com.cringe.mobileip.ui.orders.OrdersManagerFragment"
         android:label="@string/title_orders"
-        tools:layout="@layout/fragment_orders" />
+        tools:layout="@layout/fragment_orders_manager" />
 
     <fragment
         android:id="@+id/navigation_profile"

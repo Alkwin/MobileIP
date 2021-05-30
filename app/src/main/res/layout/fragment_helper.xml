@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.helper.HelperFragment">
+    tools:context=".ui.orders.helper.HelperFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
@@ -13,7 +13,7 @@
         android:background="@drawable/home_accent_top"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Ofera ajutor"
+        android:text="@string/helper_title"
         android:textColor="@color/design_default_color_on_primary"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="40dp"
                 android:gravity="center"
-                android:text="Comanda curenta"
+                android:text="@string/helper_current_command"
                 android:textColor="@color/design_default_color_on_secondary"
                 android:textSize="30sp"/>
 
@@ -70,7 +70,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
-                    android:text="Persoana:"
+                    android:text="@string/helper_person_title"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -80,7 +80,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
-                    android:text="N/A"
+                    android:text="@string/n_a"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -96,7 +96,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
-                    android:text="Taguri:"
+                    android:text="@string/helper_tags_title"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -106,7 +106,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
-                    android:text="N/A\nN/A"
+                    android:text="@string/n_a"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -122,7 +122,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="start|center_vertical"
-                    android:text="Detalii:"
+                    android:text="@string/helper_details_title"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -132,7 +132,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:gravity="end|center_vertical"
-                    android:text="N/A"
+                    android:text="@string/n_a"
                     android:textColor="@color/design_default_color_on_secondary"
                     android:textSize="25sp" />
 
@@ -159,6 +159,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
             android:padding="5dp"
-            android:text="Finalizare comanda" />
+            android:text="@string/helper_finish_button" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MobileIP</string>
     <string name="title_home">Home</string>
@@ -30,55 +31,54 @@
     <string name="register_username_hint">IoanPopescu123</string>
     <string name="register_surname_hint">Ioan</string>
     <string name="register_surname_text">Ioan</string>
-    <string name="register_surname_title">Prenume</string>
+    <string name="register_surname_title">Surname</string>
     <string name="register_name_text">Popescu</string>
     <string name="register_name_hint">Popescu</string>
-    <string name="register_name_title">Nume</string>
+    <string name="register_name_title">Name</string>
     <string name="register_username_title">Username</string>
     <string name="register_username_text">IoanPopescu123</string>
-    <string name="register_email_title">Adresa email</string>
+    <string name="register_email_title">Email address</string>
     <string name="register_email_text">IoanPopescu@yahoo.com</string>
     <string name="register_email_hint">IoanPopescu@yahoo.com</string>
-    <string name="register_password_title">Parola</string>
+    <string name="register_password_title">Password</string>
     <string name="register_password_text">1234</string>
     <string name="register_password_hint">parola</string>
-    <string name="register_password_confirm_title">Confirmarea Parolei</string>
+    <string name="register_password_confirm_title">Password confirmation</string>
     <string name="register_password_confirm_hint">parola</string>
     <string name="register_password_confirm_text">1234</string>
-    <string name="register_address_title">Adresa</string>
+    <string name="register_address_title">Address</string>
     <string name="register_address_hint">Strada Pantelimon, Nr. 100</string>
     <string name="register_address_text">Strada Pantelimon, Nr. 100</string>
-    <string name="register_number_title">Numar telefon</string>
+    <string name="register_number_title">Phone number</string>
     <string name="register_number_text">0740887000</string>
     <string name="register_number_hint">0740887000</string>
-    <string name="register_distance_title">Distanta maxima pentru ajutor (km)</string>
+    <string name="register_distance_title">Maximum help distance (km)</string>
     <string name="register_distance_text">5</string>
     <string name="register_distance_hint">5</string>
-    <string name="register_start_title">Timpul de inceput pentru cereri</string>
+    <string name="register_start_title">Start time for requests</string>
     <string name="register_start_text">08:00:00</string>
     <string name="register_start_hint">08:00:00</string>
-    <string name="register_final_title">Timpul de sfarsit pentru cereri</string>
+    <string name="register_final_title">End time for requests</string>
     <string name="register_final_text">17:30:00</string>
     <string name="register_final_hint">17:30:00</string>
     <string name="chose_adapter_username_title">Username</string>
     <string name="n_a">N/A</string>
-    <string name="chose_adapter_address_title">Adresa</string>
-    <string name="chose_adapter_sources_title">Resurse comune</string>
-    <string name="chose_adapter_score_title">Scor</string>
-    <string name="chose_adapter_distance_title">Distanta</string>
-    <string name="chose_adapter_title">Alege persoana</string>
-    <string name="helper_title">Ofera ajutor</string>
-    <string name="helper_current_command">Comanda curenta</string>
-    <string name="helper_person_title">Persoana:</string>
-    <string name="helper_details_title">Detalii:</string>
-    <string name="helper_tags_title">Taguri:</string>
-    <string name="home_title_needer">Cere ajutor</string>
-    <string name="home_title_helper">Ofera ajutor</string>
-    <string name="home_description">Cataloghează necesitățile după categorii</string>
-    <string name="home_add_info_title">Informatii suplimentare</string>
-    <string name="home_add_info_hint">Click aici!</string>
-    <string name="home_send_button">Trimite cerere</string>
-    <string name="needer_title">Detalii comanda</string>
+    <string name="chose_adapter_address_title">Address</string>
+    <string name="chose_adapter_sources_title">Common resources</string>
+    <string name="chose_adapter_score_title">Score</string>
+    <string name="chose_adapter_distance_title">Distance</string>
+    <string name="chose_adapter_title">Chose person</string>
+    <string name="helper_title">Offer help</string>
+    <string name="helper_current_command">Current request</string>
+    <string name="helper_person_title">Person:</string>
+    <string name="helper_details_title">Details:</string>
+    <string name="helper_tags_title">Tags:</string>
+    <string name="home_title_needer">Request help</string>
+    <string name="home_description">Tag your needs</string>
+    <string name="home_add_info_title">Optional info</string>
+    <string name="home_add_info_hint">Click here!</string>
+    <string name="home_send_button">Send request</string>
+    <string name="needer_title">Request details</string>
     <string name="profile_name_text">Toma Sebastian</string>
     <string name="profile_address_text">Tudor Vladimirescu Nr.101 T17</string>
     <string name="profile_number_text">077-117-3277</string>
@@ -86,16 +86,12 @@
     <string name="settings_title">Settings are here</string>
     <string name="settings_dark_mode_title">Dark Mode</string>
     <string name="orders_category_adapter_example_text">Example</string>
-    <string name="distance_alert_distance_hint">Introduce distanta maxima aici</string>
-    <string name="wight_dialog_hint">Click aici pentru a adăuga</string>
-    <string name="weight_dialog_description">Adauga cantitatea necesară</string>
+    <string name="distance_alert_distance_hint">Enter maximum distance here</string>
+    <string name="wight_dialog_hint">Click here to add</string>
+    <string name="weight_dialog_description">Add the needed quantity</string>
     <string name="weight_dialog_tag_text">Tag name</string>
     <string name="weight_dialog_tag_title">Tag:</string>
-    <string name="helper_finish_button">Finalizare comanda</string>
 
-    <string-array name="types">
-        <item>Mobile</item>
-        <item>Office</item>
-        <item>Home</item>
-    </string-array>
+    <string name="home_title_helper">Give help</string>
+    <string name="helper_finish_button">Finish order</string>
 </resources>

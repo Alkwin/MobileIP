@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:gravity="center"
-        android:text="Username"
+        android:text="@string/chose_adapter_username_title"
         android:textSize="20sp"
         android:textColor="@color/design_default_color_on_secondary"/>
 
@@ -30,7 +30,7 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="N/A"
+        android:text="@string/n_a"
         android:textColor="@color/design_default_color_on_secondary"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Adresa"
+            android:text="@string/chose_adapter_address_title"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
 
@@ -52,7 +52,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="N/A"
+            android:text="@string/n_a"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -67,7 +67,7 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="Distanta"
+            android:text="@string/chose_adapter_distance_title"
             android:textColor="@color/design_default_color_on_secondary"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -76,7 +76,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="N/A"
+            android:text="@string/n_a"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -89,7 +89,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Scor"
+            android:text="@string/chose_adapter_score_title"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
 
@@ -99,7 +99,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="N/A"
+            android:text="@string/n_a"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -113,7 +113,7 @@
             android:layout_weight="0.5"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="Resurse comune"
+            android:text="@string/chose_adapter_sources_title"
             android:textColor="@color/design_default_color_on_secondary"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -122,7 +122,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="N/A"
+            android:text="@string/n_a"
             android:textSize="20sp"
             android:textColor="@color/design_default_color_on_secondary"/>
     </androidx.appcompat.widget.LinearLayoutCompat>

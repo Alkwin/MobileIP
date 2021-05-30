@@ -35,7 +35,7 @@
             android:paddingTop="10dp"
             android:scaleX="2"
             android:scaleY="2"
-            android:text="Toma Sebastian"
+            android:text="@string/profile_name_text"
             android:textAlignment="center" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:paddingTop="15dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:text="Tudor Vladimirescu Nr.101 T17"
+            android:text="@string/profile_address_text"
             android:textAlignment="center" />
 
         <TextView
@@ -55,7 +55,7 @@
             android:paddingTop="10dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:text="077-117-3277"
+            android:text="@string/profile_number_text"
             android:textAlignment="center" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="230dp"
             android:layout_gravity="center_horizontal"
-            android:text="Log Out" />
+            android:text="@string/profile_logout_button" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

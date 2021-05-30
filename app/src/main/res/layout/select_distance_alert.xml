@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberSigned"
-        android:hint="Introduce distanta maxima aici" />
+        android:hint="@string/distance_alert_distance_hint" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

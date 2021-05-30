@@ -25,7 +25,7 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:background="@color/primary"
-                android:text="Cere ajutor"
+                android:text="@string/home_title_needer"
                 android:textColor="@color/design_default_color_on_primary"
                 android:textSize="30sp" />
 
@@ -36,7 +36,7 @@
                 android:padding="10dp"
                 android:textColor="@color/design_default_color_on_primary"
                 android:gravity="left"
-                android:text="Cataloghează necesitățile după categorii"
+                android:text="@string/home_description"
                 android:textSize="15sp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -72,7 +72,7 @@
                 android:textColor="@color/design_default_color_on_primary"
                 android:gravity="start"
                 android:padding="10dp"
-                android:text="Informatii suplimentare"
+                android:text="@string/home_add_info_title"
                 android:textSize="15sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -85,7 +85,7 @@
                 android:textSize="15sp"
                 android:gravity="center"
                 android:textColor="@color/design_default_color_on_primary"
-                android:hint="Click aici!"
+                android:hint="@string/home_add_info_hint"
                 android:padding="10dp" />
 
 
@@ -100,6 +100,6 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:background="@drawable/button_background"
-            android:text="Trimite cerere" />
+            android:text="@string/home_send_button" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
