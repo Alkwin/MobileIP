@@ -26,4 +26,7 @@ Lorin Budaca
 -creare mock-up-uri pentru home și orders
 -rezolvat mici alte bug-uri ale coilegilor
 
-Andrei Ifrim&Adrian Chiruta: Profile page, UI changes to the register form
+Andrei Ifrim&Adrian Chiruta: 
+-Profile page
+-Settings page
+-UI changes to the register form
