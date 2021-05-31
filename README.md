@@ -30,3 +30,16 @@ Andrei Ifrim&Adrian Chiruta:
 -Profile page
 -Settings page
 -UI changes to the register form
+
+Used technologies/Concepts:
+-Kotlin
+-Android
+-Networking
+-Generics
+-Multi-threading
+-LiveData
+-Localization
+-Logging
+-MVVM
+-View binding
+-Scene builder
