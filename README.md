@@ -16,15 +16,15 @@ Craciun Tudor
 -creation of mock-ups for login and tags
 
 Lorin Budaca
--pregătire structura proiect (initial commit)
--logica main view
+-preparing structure of the project (initial commit)
+-main view logic
 -ui&logic helper home
 -ui&logic needer home
 -ui&logic helper orders
 -ui&logic needer orders
--localizare aplicație
--creare mock-up-uri pentru home și orders
--rezolvat mici alte bug-uri ale coilegilor
+-localization
+-mock-ups for home and orders
+-fixing small bugs for the other colleagues
 
 Andrei Ifrim&Adrian Chiruta: 
 -Profile page
